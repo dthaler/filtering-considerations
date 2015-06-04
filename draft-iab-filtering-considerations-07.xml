@@ -891,6 +891,20 @@
           </t>
 
           <t>
+            Indeed, Poort, et al. <xref target="Poort"/> found that 
+            "any behavioural change in 
+            response to blocking access to TPB has had no lasting net 
+            impact on the overall number of downloaders from illegal 
+            sources, as new consumers have started downloading from 
+            illegal sources and people learn to circumvent the blocking 
+            while new illegal sources may be launched, causing file 
+            sharing to increase again", and that these results
+            "are in line with a tendency found in the literature that 
+            any effects of legal action against file sharing often 
+            fade out after a period of typically six months."
+          </t>
+
+          <t>
             If application content is encrypted with a security
             protocol such as IPsec or TLS, then the intermediary will
             require the ability to decrypt the packets to examine
@@ -1808,9 +1822,23 @@ Suzanne Woolf
           <title>Estimating routing symmetry on single links by passive flow measurements</title>
           <author fullname="Wolfgang John" initials="W." surname="John"/>
           <author fullname="Maurizio Dusi" initials="M." surname="Dusi"/>
-          <author fullname="K.C. Claffy"   initials="K" surname="Claffy"/>
+          <author fullname="K.C. Claffy"   initials="K." surname="Claffy"/>
           <date year="2010" />
         </front>
+      </reference>
+
+      <reference anchor="Poort"
+         target="http://staff.science.uva.nl/~vdham/research/publications/1401-Baywatch.pdf">
+        <front>
+          <title>Baywatch: Two approaches to measure the effects of
+ blocking access to The Pirate Bay</title>
+          <author fullname="Joost Poort" initials="J." surname="Poort"/>
+          <author fullname="Jorna Leenheer" initials="J." surname="Leenheer"/>
+          <author fullname="Jeroen van der Ham" initials="J." surname="van der Ham"/>
+          <author fullname="Cosmin Dumitru" initials="C." surname="Dumitru"/>
+          <date year="2014" />
+        </front>
+        <seriesInfo name="Telecommunications Policy" value="38:383-392"/>
       </reference>
 
     </references>
