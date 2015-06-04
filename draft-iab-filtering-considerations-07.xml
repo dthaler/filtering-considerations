@@ -269,18 +269,38 @@
       </t>
 
       <t>
-        Firewalls: Firewalls are a very common tool used for service
-        blocking, employed at many points in today's
-        Internet <xref target="RFC2979" />. Typically, firewalls block according to
-        content-neutral rules, e.g., blocking all inbound connections
-        or outbound connections on certain ports, protocols and
-        network layer addresses. More advanced configurations perform
-        deep packet inspection or traffic flow analysis and filter or
-        block based on rich (content-specific) rules and
-        policies. Many firewalls include web filtering capabilities
-        (see below). Firewalls can be deployed either on end hosts
-        (under user or administrator control), or at network
-        boundaries.
+        Firewalls: Firewalls of various sorts are very commonly
+        employed at many points in today's Internet
+        <xref target="RFC2979" />. They can be deployed either on end hosts
+        (under user or administrator control), or in the network, typically
+        at network boundaries.  While the Internet
+        Security Glossary <xref target="RFC4949" /> contains an extended
+        definition of a firewall, informally, most people would tend to
+        think of a firewall as simply "something that blocks unwanted
+        traffic" (see <xref target="RFC4948" /> for a discussion on many
+        types of unwanted traffic).  While there are many sorts of
+        firewalls, there are several specific types of firewall
+        functionality worth noting.
+       </t>
+       <t>
+          <list style ="symbols">
+          <t> Stateless Packet Filtering: Stateless packet filters block
+              according to content-neutral rules, e.g., blocking all
+              inbound connections or outbound connections on certain ports,
+              protocols, or network-layer addresses.
+          </t>
+          <t> Stateful Packet Filtering: More advanced configurations
+              require keeping state used to enforce flow-based policies,
+              e.g., blocking inbound traffic for flows that have not been
+              established, or blocking packets or flows based on
+              the content carried by other packets.
+          </t>
+          <t> Deep Packet Inspection: Yet more advanced configurations
+              perform deep packet inspection and filter or block based on
+              the content carried.  Many firewalls include web filtering
+              capabilities (see below).
+          </t>
+          </list>
       </t>
 
       <t>
@@ -891,16 +911,16 @@
           </t>
 
           <t>
-            Indeed, Poort, et al. <xref target="Poort"/> found that 
-            "any behavioural change in 
-            response to blocking access to TPB has had no lasting net 
-            impact on the overall number of downloaders from illegal 
-            sources, as new consumers have started downloading from 
-            illegal sources and people learn to circumvent the blocking 
-            while new illegal sources may be launched, causing file 
+            Indeed, Poort, et al. <xref target="Poort"/> found that
+            "any behavioural change in
+            response to blocking access to TPB has had no lasting net
+            impact on the overall number of downloaders from illegal
+            sources, as new consumers have started downloading from
+            illegal sources and people learn to circumvent the blocking
+            while new illegal sources may be launched, causing file
             sharing to increase again", and that these results
-            "are in line with a tendency found in the literature that 
-            any effects of legal action against file sharing often 
+            "are in line with a tendency found in the literature that
+            any effects of legal action against file sharing often
             fade out after a period of typically six months."
           </t>
 
@@ -1471,7 +1491,7 @@
         white lists provide similar risks because sites that had "acceptable"
         content may become targets for "unacceptable content", and similarly,
         access to perfectly inoffensive and perhaps useful or productive
-        content is unnecessarily blocked.  
+        content is unnecessarily blocked. 
       </t>
       <t>
         From a technical perspective, there
@@ -1480,7 +1500,7 @@
         endpoint-based filtering with network filtering may prove least
         damaging.  An endpoint may choose to participate in a filtering
         regime in exchange for the network providing broader unfiltered
-        access.  
+        access. 
       </t>
       <t>
         Finally, we note that where filtering is occurring to address
