@@ -1427,6 +1427,43 @@
     </section>
 
     <section title="Conclusion">
+<!-- Updated conclusion text from Eliot Lear, Feb. 4, 2015 -->
+      <t>
+        Filtering will continue to occur on the Internet.  We conclude that,
+        whenever possible, filtering should be done on the end point.
+        Cooperative end points are most likely to have sufficient contextual
+        knowledge to effectively target blocking.  It is realistic to expect
+        that at times filtering will not be done on the end points.  In these
+        cases, promptly informing the endpoint that blocking has occurred
+        provides necessary transparency to redress any errors, particularly
+        as they relate to any collatoral damage introduced by errant filters.
+      </t>
+      <t>
+        Black list approaches are often a game of "Cat and Mouse", where those
+        with the content move it around to avoid blocking.  At the same time,
+        white lists provide similar risks because sites that had "acceptable"
+        content may become targets for "unacceptable content", and similarly,
+        access to perfectly inoffensive and perhaps useful or productive
+        content is unnecessarily blocked.  
+      </t>
+      <t>
+        From a technical perspective, there
+        are no perfect or even good solutions.  There is only least bad.
+        On that front, we posit that a hybrid approach that combines
+        endpoint-based filtering with network filtering may prove least
+        damaging.  An endpoint may choose to participate in a filtering
+        regime in exchange for the network providing broader unfiltered
+        access.  
+      </t>
+      <t>
+        Finally, we note that where filtering is occurring to address
+        content that is generally agreed to be inappropriate or illegal,
+        strong cooperation among service providers and governments may provide
+        additional means to identify both the victims and the perpetrators
+        through non-filtering mechanisms, such as partnerships with the
+        finance industry to identify and limit illegal transactions.
+      </t>
+<!-- PREVIOUS TEXT WAS:
       <t>
         Because it least likely to create technical or architectural
         problems, endpoint-based blocking is the form of Internet
@@ -1497,6 +1534,7 @@
         their disposal and the likely effectiveness of each
         combination of approaches.
       </t>
+-->
     </section>
 
     <section title="IANA Considerations">
