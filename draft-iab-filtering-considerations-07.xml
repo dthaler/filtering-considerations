@@ -230,8 +230,7 @@
         and the overall Internet architecture. This analysis is
         limited to technical blocking mechanisms.  Enforcement of
         blocking via contractual terms or legal action is out of
-        scope, though usually these actions ultimately result in the
-        application of technical mechanisms.
+        scope.
       </t>
 
       <t>
@@ -300,7 +299,7 @@
         "portals" or "enterprise proxies."  These portals present
         their own HTTPS certificates that are invalid for any given
         domain according to normal validation rules, but may still be
-        trusted if the user installs a security exception. (See
+        trusted if the administrator installs a security exception. (See
         further discussion in <xref target="security" />.)
       </t>
 
@@ -316,7 +315,7 @@
       </t>
 
       <t>
-        Domain name seizure: In recent years, US law enforcement
+        Domain Name Seizure: In recent years, U.S. law enforcement
         authorities have been issuing legal orders to domain name
         registries to seize domain names associated with the
         distribution of counterfeit goods and other alleged illegal
@@ -476,7 +475,7 @@
 
       <section title="Components used for blocking">
         <t>
-          Broadly speaking, the process of a delivering an Internet
+          Broadly speaking, the process of delivering an Internet
           service involves three different components:
         </t>
 
@@ -484,7 +483,7 @@
           <list style="numbers">
             <t>
               Endpoints: The actual content of the service is typically an
-              application layer protocol between two Internet hosts.
+              application layer protocol between two or more Internet hosts.
               In many protocols, there are two endpoints, a client and
               a server.
             </t>
@@ -682,7 +681,7 @@
             effects of blocking to be overbroad. For example, web
             filtering systems in India and China have been shown to
             cause "collateral damage" by unwittingly blocking users in
-            Oman and the US from accessing web sites in Germany and
+            Oman and the U.S. from accessing web sites in Germany and
             Korea <xref target="IN-OM-filtering"/><xref
             target="CCS-GFC-collateral-damage"/>.
           </t>
@@ -704,7 +703,7 @@
             spamming," a spam originator uses addresses in many
             different networks as sources for spam. This technique is
             already widely used to spread spam generation across a
-            variety of resources and jursidictions to prevent spam
+            variety of resources and jurisdictions to prevent spam
             blocking from being effective.
           </t>
 
@@ -773,8 +772,8 @@
           whether it should be blocked, and then block or allow the
           communication as desired. For example, web filtering devices
           usually inspect HTTP requests to determine the URI being
-          requested, compare that URI to a list of black-listed or
-          white-listed URIs, and allow the request to proceed only if
+          requested, compare that URI to a list of blacklisted or
+          whitelisted URIs, and allow the request to proceed only if
           it is permitted by policy (or at least not forbidden).
           Firewalls perform a similar function for other classes of
           traffic in addition to HTTP. Some blocking systems focus on
@@ -1163,16 +1162,16 @@
           </t>
 
           <t>
-            In the DNS realm, one of the recent cases of US law
+            In the DNS realm, one of the recent cases of U.S. law
             enforcement seizing domain names involved RojaDirecta, a
             Spanish web site. Even though several of the affected
             domain names belonged to Spanish entities, they were
-            subject to blocking by the US government because certain
-            servers were operated in the US. Government officials
+            subject to blocking by the U.S. government because certain
+            servers were operated in the U.S. Government officials
             required the operators of the parent zones of a target
             name (e.g., "com" for "example.com") to direct queries for
-            that name to a set of US-government-operated name servers.
-            Users of other services under a target name (e.g. e-mail)
+            that name to a set of U.S.-government-operated name servers.
+            Users of other services under a target name (e.g., e-mail)
             would thus be unable to locate the servers providing
             services for that name, denying them the ability to access
             these services.
@@ -1264,7 +1263,7 @@
           whether a given message or sender should be blocked.  These
           systems typically have the property that many filtering
           systems (browsers, MTAs) share a single reputation
-          service. Even the absence of a provisioned PTR records for
+          service. Even the absence of provisioned PTR records for
           an IP address may result in email messages not being
           accepted.
         </t>
@@ -1479,7 +1478,7 @@
       </t>
 <!-- PREVIOUS TEXT WAS:
       <t>
-        Because it least likely to create technical or architectural
+        Because it is least likely to create technical or architectural
         problems, endpoint-based blocking is the form of Internet
         service blocking that is least harmful to the Internet. From a
         technical perspective, it is the most preferred option because
