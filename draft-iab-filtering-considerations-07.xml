@@ -112,6 +112,20 @@
       </address>
     </author>
 
+    <author role="editor" initials="D." surname="Thaler" fullname="Dave Thaler">
+          <organization>Microsoft</organization>
+          <address>
+            <postal>
+              <street>One Microsoft Way</street>
+              <city>Redmond</city>
+              <region>WA</region>
+              <code>98052</code>
+              <country>US</country>
+            </postal>
+            <email>dthaler@microsoft.com</email>
+          </address>
+        </author>
+
     <date/>
 
     <!-- If the month and year are both specified and are the current ones, xml2rfc will fill
@@ -1542,22 +1556,29 @@
         </t>
     </section>
 
+    <section title="Acknowledgments">
+        <t> Thanks to the many reviewers who provided helpful comments,
+            especially Bill Herrin, Eliot Lear, Patrik Falstrom,
+            Pekka Savola, and Russ White.
+        </t>
+    </section>
+
     <section title="IAB Members at the Time of This Writing">
         <figure>
             <artwork>
 Jari Arkko
 Mary Barnes
 Marc Blanchet
-Joel Halpern
+Ralph Droms
 Ted Hardie
 Joe Hildebrand
 Russ Housley
-Eliot Lear
-Xing Li
 Erik Nordmark
+Robert Sparks
 Andrew Sullivan
 Dave Thaler
 Brian Trammell
+Suzanne Woolf
             </artwork>
         </figure>
     </section>
