@@ -11,6 +11,8 @@
 <!ENTITY RFC4084 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4084.xml">
 <!ENTITY RFC4301 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4301.xml">
 <!ENTITY RFC4924 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4924.xml">
+<!ENTITY RFC4948 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4948.xml">
+<!ENTITY RFC4949 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4949.xml">
 <!ENTITY RFC5246 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5246.xml">
 <!ENTITY RFC5782 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5782.xml">
 <!ENTITY RFC6698 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6698.xml">
@@ -1630,6 +1632,8 @@ Suzanne Woolf
       &RFC4084;
       &RFC4301;
       &RFC4924;
+      &RFC4948;
+      &RFC4949;
       &RFC5246;
       &RFC5782;
       &RFC6698;
