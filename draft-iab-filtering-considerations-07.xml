@@ -17,6 +17,7 @@
 <!ENTITY RFC5782 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5782.xml">
 <!ENTITY RFC6698 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6698.xml">
 <!ENTITY RFC6480 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6480.xml">
+<!ENTITY RFC6943 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6943.xml">
 <!ENTITY RFC7288 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7288.xml">
 ]>
 <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
@@ -400,7 +401,7 @@
       <section title="Entities that set blocking policies">
         <t>
           Parties that institute blocking policies include
-          governments, enterprises, network operators, application
+          governments, courts, enterprises, network operators, application
           providers, and individual end users. In some cases, these
           parties use their own technical assets to conduct blocking;
           for example, a network operator might install a firewall in
@@ -629,7 +630,7 @@
           criteria: scope, granularity, efficacy, and security.
         </t>
 
-        <section title="Scope: What content or services can be blocked?">
+        <section title="Scope: What content or services can be blocked for what set of users?">
           <t>
             The Internet is comprised of many distinct autonomous
             networks and applications, which means that the impact of
@@ -711,6 +712,13 @@
 
         <section title="Efficacy: How easy is it for a resource or service to avoid being blocked?">
           <t>
+            Although blocking a resource or service might have some immediate
+            effect, efficacy must be evaluated in terms of whether it
+            is easy to circumvent.  Simply doing a one-time policy
+            is often unlikely to have lasting efficacy
+            (e.g., see <xref target="CleanFeed"/>).
+          </t>
+          <t>
             For blacklist-style blocking, the distributed and mobile
             nature of Internet resources limits the effectiveness of
             blocking actions. A service that is blocked in one
@@ -721,7 +729,13 @@
             re-configured to use non-blocked resources. If a web site
             is prevented from using a domain name or set of IP
             addresses, the web site can simply move to another domain
-            name or network. In a process known as "snowshoe
+            name or network, or simply uses alternate syntaxes to express
+            the same resource name such as with internationalized names
+            (see the discussion of false negatives in 
+            <xref target="RFC6943"/>).
+          </t>
+          <t> 
+            In a process known as "snowshoe
             spamming," a spam originator uses addresses in many
             different networks as sources for spam. This technique is
             already widely used to spread spam generation across a
@@ -761,7 +775,7 @@
             interference. Protocols such as TLS and IPsec <xref
             target="RFC5246"/><xref target="RFC4301"/> are designed to
             ensure that each endpoint of the communication knows the
-            identity of the other endpoint, and that only the
+            identity of the other endpoint(s), and that only the
             endpoints of the communication can access the secured
             contents of the communication. For example, when a user
             connects to a bank's web site, TLS ensures that the user's
@@ -774,9 +788,22 @@
             Some blocking strategies require intermediaries to insert
             themselves within the end-to-end communications path,
             potentially breaking security properties of Internet
-            protocols <xref target="RFC4924" />. In these cases it can be difficult or
+            protocols <xref target="RFC4924" />. In these cases it can be
+            difficult or
             impossible for endpoints to distinguish between attackers
             and "authorized" entities conducting blocking.
+          </t>
+
+          <t>
+            Finally, one needs to evaluate whether a blocking mechanism
+            can be used by an end-user to efficiently locate blocked
+            resources that can then be accessed via other mechanisms
+            that circumvent the blocking mechanism. For example,
+            Clayton <xref target="CleanFeed"/> showed how special
+            treatment in one blocking system could be detected by
+            end users in order to efficiently locate illegal websites,
+            which was thus counter-productive to the policy objective
+            of the blocking mechanism.
           </t>
         </section>
       </section>
@@ -1636,8 +1663,9 @@ Suzanne Woolf
       &RFC4949;
       &RFC5246;
       &RFC5782;
-      &RFC6698;
       &RFC6480;
+      &RFC6698;
+      &RFC6943;
       &RFC7288;
 
       <?rfc include="http://xml.resource.org/public/rfc/bibxml3/reference.I-D.blanchet-iab-internetoverport443.xml"?>
@@ -1863,6 +1891,16 @@ Suzanne Woolf
           <date year="2014" />
         </front>
         <seriesInfo name="Telecommunications Policy" value="38:383-392"/>
+      </reference>
+
+      <reference anchor="CleanFeed"
+         target="http://www.cl.cam.ac.uk/~rnc1/cleanfeed.pdf">
+        <front>
+          <title>Failures in a Hybrid Content Blocking System</title>
+          <author fullname="Richard Clayton" initials="R." surname="Clayton"/>
+          <date year="2005" />
+        </front>
+        <seriesInfo name="Fifth Privacy Enhancing Technologies Workshop, PET" value="2005"/>
       </reference>
 
     </references>
