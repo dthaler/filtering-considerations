@@ -854,7 +854,7 @@
 
         <section title="Scope">
           <t>
-            Network-based approaches to blocking run into several
+            Network-based approaches to blocking often run into several
             technical issues that limit their viability in practice.
             In particular, many issues arise from the fact that an
             intermediary needs to have access to a sufficient amount
@@ -875,8 +875,9 @@
 
           <t>
             This asymmetry means that an intermediary in a network
-            with many egress points will often see only one half of a
-            given communication (if it sees any of it at all), which
+            with many egress points may, depending on topology and
+            configuration, see only one half of a given communication
+            (if it sees any of it at all), which
             may limit the scope of the communications that it can
             filter. For example, a filter aimed at requests destined
             for particular URIs cannot make accurate blocking
