@@ -254,6 +254,7 @@
         are also out of scope.
       </t>
 
+<!-- Per ticket 366, moved to section 4.3.4
       <t>
         In <xref target="SAC-056"/>, ICANN's Security and Stability
         Advisory Committee (SSAC) assessed the aspects of blocking
@@ -261,6 +262,7 @@
         perspective on blocking and filtering and genaralizes from
         some of SSAC's findings.
       </t>
+-->
     </section>
 
     <section title="Filtering Examples" anchor="examples">
@@ -453,7 +455,9 @@
             </t>
           </list>
         </t>
+      </section>
 
+      <section title="Blacklist vs. Whitelist Model">
         <t>
           Note that the purpose for which blocking occurs often dictates
           whether the blocking system operates on a blacklist model,
@@ -854,16 +858,34 @@
 
         <section title="Scope">
           <t>
-            Network-based approaches to blocking often run into several
+            In the case of government-initiated blocking, a network
+            exists within specific jurisdictions, and the operators are thus
+            subject to jurisdictional laws. It is thus possible for
+            laws to be structured to effectuate blocking by imposing
+            obligations on the operators of networks within
+            a jurisdiction, either via direct government action or by
+            allowing private actors to demand blocking (e.g., through
+            lawsuits).
+          </t>
+
+          <t>
+            Regardless of who is responsible for a blocking policy,
+            enforcement can be done using Stateless Packet Filtering,
+            Stateful Packet Filtering, or Deep Packet Inspection as
+            defined in <xref target="examples"/>.  While network-based
+            Stateless Packet Filtering has granularity issues discussed
+            in <xref target="networkgranularity"/>, network-based
+            Stateful Packet Filtering and Deep Packet Inspection approaches
+            often run into several
             technical issues that limit their viability in practice.
-            In particular, many issues arise from the fact that an
+            For example, many issues arise from the fact that an
             intermediary needs to have access to a sufficient amount
             of traffic to make its blocking determinations.
           </t>
 
           <t>
             For residential or consumer networks with many egress
-            points, the first challenge to obtaining this traffic is
+            points, the first step to obtaining this traffic is
             simply gaining access to the constituent packets. The
             Internet is designed to deliver packets hop-by-hop from
             source to destination -- not to any particular point along
@@ -900,14 +922,15 @@
           </t>
         </section>
 
-        <section title="Granularity">
+        <section title="Granularity" anchor="networkgranularity">
           <t>
             Once an intermediary in a network has access to traffic,
             it must identify which packets must be filtered. This
             decision is usually based on some combination of
             information at the network layer (e.g., IP addresses),
             transport layer (ports), or application layer (URIs or
-            other content). Blocking based on application-layer
+            other content). Deep Packet Inspection type blocking based 
+            on application-layer
             attributes can be potentially more granular and less
             likely to cause collateral damage than blocking all
             traffic associated with a particular address, which can
@@ -1192,7 +1215,9 @@
             seeking to circumvent the blocks may opt to use
             less-secure but unblocked parallel services. As applied to
             the DNS, these considerations are further discussed in
-            ISOC's whitepaper on DNS filtering <xref
+            the advisory <xref target="SAC-056"/>
+            from ICANN's Security and Stability Advisory
+            Committee (SSAC), and in ISOC's whitepaper on DNS filtering <xref
             target="ISOCFiltering"/>, but they also apply to other
             global Internet resources.
           </t>
@@ -1399,23 +1424,6 @@
           </t>
         </section>
 
-        <section title="Summary">
-          <t>
-            Out of the three design patterns, endpoint-based blocking
-            is the least likely to cause collateral damage to Internet
-            services or the overall Internet architecture. Endpoint-based
-            blocking systems can see into all layers involved in a communication,
-            allowing blocking to be narrowly targeted. Adversary
-            mobility can be accounted for as soon as reputation
-            systems are updated with new adversary information. One
-            potential drawback of endpoint-based blocking is that
-            it requires the endpoint's cooperation; effectuating
-            blocking at an endpoint when it is not in the endpoint's
-            interest is therefore difficult to accomplish because the
-            endpoint's user can disable the blocking or switch to a different endpoint.
-          </t>
-        </section>
-
         <section title="Server Endpoints">
           <t>
             In this discussion of endpoint-based blocking, the focus has
@@ -1440,6 +1448,23 @@
             themselves to block particular forms of content in response to
             requests from governments or other parties can sometimes motivate
             those latter parties to engage in blocking elsewhere within the Internet.
+          </t>
+        </section>
+
+        <section title="Summary">
+          <t>
+            Out of the three design patterns, endpoint-based blocking
+            is the least likely to cause collateral damage to Internet
+            services or the overall Internet architecture. Endpoint-based
+            blocking systems can see into all layers involved in a communication,
+            allowing blocking to be narrowly targeted. Adversary
+            mobility can be accounted for as soon as reputation
+            systems are updated with new adversary information. One
+            potential drawback of endpoint-based blocking is that
+            it requires the endpoint's cooperation; effectuating
+            blocking at an endpoint when it is not in the endpoint's
+            interest is therefore difficult to accomplish because the
+            endpoint's user can disable the blocking or switch to a different endpoint.
           </t>
         </section>
       </section>
