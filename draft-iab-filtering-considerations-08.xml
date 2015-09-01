@@ -4,6 +4,7 @@
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
 <!ENTITY RFC1122 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.1122.xml">
 <!ENTITY RFC2775 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2775.xml">
+<!ENTITY RFC2826 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2826.xml">
 <!ENTITY RFC2979 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2979.xml">
 <!ENTITY RFC3261 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3261.xml">
 <!ENTITY RFC3724 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3724.xml">
@@ -1229,6 +1230,7 @@
             seeking to circumvent the blocks may opt to use
             less-secure but unblocked parallel services. As applied to
             the DNS, these considerations are further discussed in
+            <xref target="RFC2826"/> and in
             the advisory <xref target="SAC-056"/>
             from ICANN's Security and Stability Advisory
             Committee (SSAC), and in ISOC's whitepaper on DNS filtering <xref
@@ -1371,9 +1373,19 @@
           accepted.
         </t>
 
-        <section title="Scope and granularity">
+        <section title="Scope">
           <t>
-            Endpoint-based blocking lacks some of the limitations of
+            In an endpoint-based blocking system, blocking actions are
+            performed autonomously, by individual endpoints or their
+            delegates.  The effects of blocking are thus usually local
+            in scope, minimizing the effects on other users or other,
+            legitimate services.
+          </t>
+        </section>
+
+        <section title="Granularity">
+          <t>
+            Endpoint-based blocking avoids some of the limitations of
             rendezvous-based blocking: while rendezvous-based blocking
             can only see and affect the rendezvous service at hand
             (e.g., DNS name resolution), endpoint-based blocking can see into
@@ -1386,14 +1398,6 @@
             application may have less ability to make fine-grained decisions
             than an application that does its own blocking (see
             <xref target="RFC7288" /> for further discussion).
-          </t>
-
-          <t>
-            In an endpoint-based blocking system, blocking actions are
-            performed autonomously, by individual endpoints or their
-            delegates.  The effects of blocking are thus usually local
-            in scope, minimizing the effects on other users or other,
-            legitimate services.
           </t>
         </section>
 
@@ -1458,7 +1462,7 @@
             information, which is assumed to be a proxy for age.
           </t>
           <t>
-            The fact that content-producing endpoints do not take it upon
+            The fact that content-producing endpoints often do not take it upon
             themselves to block particular forms of content in response to
             requests from governments or other parties can sometimes motivate
             those latter parties to engage in blocking elsewhere within the Internet.
@@ -1660,7 +1664,7 @@
 
     <section title="Acknowledgments">
         <t> Thanks to the many reviewers who provided helpful comments,
-            especially Bill Herrin, Eliot Lear, Patrik Falstrom,
+            especially Bill Herrin, Eliot Lear, Patrik Faltstrom,
             Pekka Savola, and Russ White.
         </t>
     </section>
@@ -1692,6 +1696,7 @@ Suzanne Woolf
     <references title="Informative References">
       &RFC1122;
       &RFC2775;
+      &RFC2826;
       &RFC2979;
       &RFC3261;
       &RFC3724;
