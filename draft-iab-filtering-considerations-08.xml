@@ -115,7 +115,7 @@
       </address>
     </author>
 
-    <author role="editor" initials="D." surname="Thaler" fullname="Dave Thaler">
+    <author initials="D." surname="Thaler" fullname="Dave Thaler">
           <organization>Microsoft</organization>
           <address>
             <postal>
@@ -956,11 +956,18 @@
             to quickly change its IP address using only a few simple
             steps: changing a single DNS record and provisioning the
             new address on its server or moving its services to the
-            new address. Indeed, in the face of IP-based blocking in
+            new address <xref target="BT-TPB"/>.
+            <!-- DT removed reference to TPB-cloud because there's
+                 little relevant there and it's a questionable
+                 site in the first place.  Also Pekka in ticket 366
+                 pointed out that the old characterization was
+                 incorrect and so the reference is no longer useful.
+
+            Indeed, in the face of IP-based blocking in
             some networks, services such as The Pirate Bay are now
             using cloud hosting services so that their IP addresses
-            are difficult for intermediaries to predict <xref
-            target="BT-TPB"/><xref target="TPB-cloud"/>.
+            are difficult for intermediaries to predict .
+              -->
           </t>
 
           <t>
@@ -1107,7 +1114,7 @@
         <t>
           Internet applications often require or rely on support from
           common, global rendezvous services, including the DNS,
-          certificate authorities, WHOIS databases, and Internet Route
+          certificate authorities, search engines, WHOIS databases, and Internet Route
           Registries. These services control or register the structure
           and availability of Internet applications by providing data
           elements that are used by application code. Some
@@ -1164,17 +1171,24 @@
 
         <section title="Granularity">
           <t>
-            Blocking based on global rendezvous services tends to be
-            overbroad because the resources blocked often support
-            multiple services. This can cause collateral damage to
-            legitimate uses of
-            a resource. For example, a given address or domain name
-            might host both legitimate services and services that
-            governments desire to block. A service hosted under a
-            domain name and operated in a jurisdiction where it is
-            considered undesirable might be considered legitimate in
-            another jurisdiction; a blocking action in the host
-            jurisdiction would deny legitimate services in the other.
+            Blocking at a global rendezvous service can be overbroad
+            if the resources blocked support multiple services, since
+            blocking service can cause collateral damage to
+            legitimate uses of other services.
+            For example, a given address or domain name
+            might host both legitimate services as well as services
+            that entities desire to block.
+          </t>
+          <t>
+            Furthermore, if a service is hosted and operated within a
+            jurisdiction where it is considered legitimate, then
+            blocking access at a global rendezvous service 
+            (e.g., one within a jurisdiction where it is considered
+            illegitimate) might deny legitimate services within
+            the legitimate jurisdictions. This type of collateral damage
+            is lessened when blocking is done at a local rendezvous
+            server that only has local impact, rather than at a global
+            rendezvous server with global impact.
           </t>
         </section>
 
@@ -1184,7 +1198,7 @@
             of blocking based on rendezvous services. If the Internet
             community realizes that a blocking decision has been made
             and wishes to counter it, then local networks can "patch"
-            the authoritative data that the rendezvous service
+            the authoritative data that a global rendezvous service
             provides to avoid the blocking (although the development
             of DNSSEC and the RPKI are causing this to change by
             requiring updates to be authorized). In the DNS case,
@@ -1837,13 +1851,15 @@ Suzanne Woolf
         </front>
       </reference>
 
-      <reference anchor="TPB-cloud" target="http://thepiratebay.se/blog/224">
-        <front>
-          <title>The Pirate Cloud</title>
-          <author/>
-          <date day="17" month="October" year="2012"/>
-        </front>
-      </reference>
+      <!--
+          <reference anchor="TPB-cloud" target="http://thepiratebay.se/blog/224">
+            <front>
+              <title>The Pirate Cloud</title>
+              <author/>
+              <date day="17" month="October" year="2012"/>
+            </front>
+          </reference>
+        -->
 
       <reference anchor="IN-OM-filtering"
                  target="https://citizenlab.org/2012/07/routing-gone-wild/">
