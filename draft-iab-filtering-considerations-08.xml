@@ -298,8 +298,7 @@
           <t> Stateful Packet Filtering: More advanced configurations
               require keeping state used to enforce flow-based policies,
               e.g., blocking inbound traffic for flows that have not been
-              established, or blocking packets or flows based on
-              the content carried by other packets.
+              established.
           </t>
           <t> Deep Packet Inspection: Yet more advanced configurations
               perform deep packet inspection and filter or block based on
@@ -405,16 +404,27 @@
         <t>
           Parties that institute blocking policies include
           governments, courts, enterprises, network operators, application
-          providers, and individual end users. In some cases, these
-          parties use their own technical assets to conduct blocking;
-          for example, a network operator might install a firewall in
+          providers, and individual end users. 
+        </t>
+        <t>
+          In some cases, the policy setting entity is the same as the
+          entity that enforces the policy.
+          For example, a network operator might install a firewall in
           its own networking equipment, or a web application provider
           might block responses between its web server and certain
-          clients. In other cases, particularly in the case of
-          blocking initiated by governments, the entity that
-          institutes the blocking policy works with other entities to
-          effectuate blocking using technical assets that it does not
-          control.
+          clients. 
+        </t>
+        <t>
+          In other cases, the policy setting entity is different from
+          the entity that enforces the policy.  Such policy might be
+          imposed upon the enforcing entity, such as in the case of
+          blocking initiated by governments, or the enforcing entity
+          might explicitly choose to use policy set by another enity,
+          such as in the case of a reputation system used by a spam
+          filter or safe browsing service.  Because a policy might
+          be enforced by different entities, it is best if policy can
+          be expressed in a form that is independent of the enforcing
+          technology.
         </t>
       </section>
 
@@ -456,21 +466,21 @@
             </t>
           </list>
         </t>
-      </section>
 
-      <section title="Blacklist vs. Whitelist Model">
-        <t>
-          Note that the purpose for which blocking occurs often dictates
-          whether the blocking system operates on a blacklist model,
-          where communications are allowed by default but a subset are
-          blocked, or a whitelist model, where communications are
-          blocked by default with only a subset allowed. Captive
-          portals, walled gardens, and sandboxes used for security or
-          network endpoint assessment usually require a whitelist model
-          since the scope of communications allowed is narrow. Blocking
-          for other purposes often uses a blacklist model since only
-          individual content or traffic is intended to be blocked.
-        </t>
+        <section title="Blacklist vs. Whitelist Model">
+          <t>
+            Note that the purpose for which blocking occurs often dictates
+            whether the blocking system operates on a blacklist model,
+            where communications are allowed by default but a subset are
+            blocked, or a whitelist model, where communications are
+            blocked by default with only a subset allowed. Captive
+            portals, walled gardens, and sandboxes used for security or
+            network endpoint assessment usually require a whitelist model
+            since the scope of communications allowed is narrow. Blocking
+            for other purposes often uses a blacklist model since only
+            individual content or traffic is intended to be blocked.
+          </t>
+        </section>
       </section>
 
       <section title="Intended targets of blocking">
@@ -496,7 +506,7 @@
           web pages associated with illegal activity, but by removing
           the domains from use, they affect all services made
           available by the hosts associated with those names,
-          including mail services and web services unrelated to the
+          including mail services and web services that may be unrelated to the
           illegal activity.
         </t>
       </section>
@@ -635,26 +645,43 @@
           criteria: scope, granularity, efficacy, and security.
         </t>
 
-        <section title="Scope: What content or services can be blocked for what set of users?">
+        <!-- DT updated the following section because it was confusing and
+             convoluted granularity (the next section) with topological
+             scope, whereas the text in later Scope sections is in the
+             the context of topological scope.
+          -->
+        <section title="Scope: What set of hosts and users are affected?">
           <t>
             The Internet is comprised of many distinct autonomous
             networks and applications, which means that the impact of
-            a blocking system will only be within a defined scope. For
+            a blocking system will only be within a defined topological scope. For
             example, blocking within an access network will only
             affect a relatively small, well-defined set of users
-            (namely, those connected to the access network), but can
-            affect all applications for those users. Blocking
-            effectuated by an application provider can affect users
-            across the entire Internet, but only for that specific
-            application. Thus the scope of the impact might be narrow
-            in one dimension (set of users or set of applications
-            affected) but broad in another. In some cases,
-            applications and rendezvous services are so intertwined
-            with each other that filtering a single service or in a
-            single network location can have broad effects in multiple
-            directions. Blocking systems are generally viewed as less
+            (namely, those connected to the access network).
+            <!-- but can affect all applications for those users. -->
+            Blocking effectuated by an application provider can affect users
+            across the entire Internet.
+            <!-- but only for that specific
+                 application. Thus the scope of the impact might be narrow
+                 in one dimension (set of users or set of applications
+                 affected) but broad in another. In some cases,
+                 applications and rendezvous services are so intertwined
+                 with each other that filtering a single service or in a
+                 single network location can have broad effects in multiple
+                 directions. 
+              -->
+          </t>
+          <t>
+            Blocking systems are generally viewed as less
             objectionable if the scope of their impact is as narrow as
             possible while still being effective.
+            Design flaws in blocking systems may cause the
+            effects of blocking to be overbroad. For example, web
+            filtering systems in India and China have been shown to
+            cause "collateral damage" by unwittingly blocking users in
+            Oman and the U.S. from accessing web sites in Germany and
+            Korea <xref target="IN-OM-filtering"/><xref
+            target="CCS-GFC-collateral-damage"/>.
           </t>
         </section>
 
@@ -704,15 +731,6 @@
             characteristics are sometimes used to narrow the subset of
             traffic to be blocked.
           </t>
-          <t>
-            Design flaws in blocking systems may also cause the
-            effects of blocking to be overbroad. For example, web
-            filtering systems in India and China have been shown to
-            cause "collateral damage" by unwittingly blocking users in
-            Oman and the U.S. from accessing web sites in Germany and
-            Korea <xref target="IN-OM-filtering"/><xref
-            target="CCS-GFC-collateral-damage"/>.
-          </t>
         </section>
 
         <section title="Efficacy: How easy is it for a resource or service to avoid being blocked?">
@@ -734,10 +752,10 @@
             re-configured to use non-blocked resources. If a web site
             is prevented from using a domain name or set of IP
             addresses, the web site can simply move to another domain
-            name or network, or simply uses alternate syntaxes to express
-            the same resource name such as with internationalized names
+            name or network, or use alternate syntaxes to express
+            the same resource name 
             (see the discussion of false negatives in 
-            <xref target="RFC6943"/>).
+            <xref target="RFC6943"/>) such as with internationalized names.
           </t>
           <t> 
             In a process known as "snowshoe
@@ -747,7 +765,6 @@
             variety of resources and jurisdictions to prevent spam
             blocking from being effective.
           </t>
-
           <t>
             In the presence of either blacklist or whitelist systems,
             users may choose to use different sets of protocols or
@@ -796,7 +813,10 @@
             protocols <xref target="RFC4924" />. In these cases it can be
             difficult or
             impossible for endpoints to distinguish between attackers
-            and "authorized" entities conducting blocking.
+            and "authorized" entities conducting blocking. For example,
+            an enterprise firewall administrator could gain access to
+            users' personal bank accounts when users on the enterprise
+            network connect to bank web sites.
           </t>
 
           <t>
@@ -816,7 +836,7 @@
       <section title="Network-Based Blocking">
         <t>
           Being able to block access to resources without the consent
-          or cooperation of either endpoint to a communication is
+          or cooperation of either endpoint is
           viewed as a desirable feature by some entities that deploy
           blocking systems. Systems that have this property are often
           implemented using intermediary devices in the network, such
@@ -828,7 +848,7 @@
           usually inspect HTTP requests to determine the URI being
           requested, compare that URI to a list of blacklisted or
           whitelisted URIs, and allow the request to proceed only if
-          it is permitted by policy (or at least not forbidden).
+          it is permitted by policy.
           Firewalls perform a similar function for other classes of
           traffic in addition to HTTP. Some blocking systems focus on
           specific application-layer traffic, while others, such as
@@ -899,8 +919,9 @@
           <t>
             This asymmetry means that an intermediary in a network
             with many egress points may, depending on topology and
-            configuration, see only one half of a given communication
-            (if it sees any of it at all), which
+            configuration, see only one half of a given communication,
+            <!-- (if it sees any of it at all), -->
+            which
             may limit the scope of the communications that it can
             filter. For example, a filter aimed at requests destined
             for particular URIs cannot make accurate blocking
@@ -938,7 +959,7 @@
             impact unrelated occupants of the same address. However,
             more narrowly focused targeting may be more complex, less
             efficient, or easier to circumvent than filtering that
-            sweeps more broadly, and entities that seek to block may
+            sweeps more broadly, and entities that seek to block must
             balance these attributes against each other when choosing
             a blocking system.
           </t>
@@ -989,7 +1010,7 @@
             If application content is encrypted with a security
             protocol such as IPsec or TLS, then the intermediary will
             require the ability to decrypt the packets to examine
-            application content. Since security protocols are designed
+            application content. Since security protocols are generally designed
             to provide end-to-end security (i.e., to prevent
             intermediaries from examining content), the intermediary
             would need to masquerade as one of the endpoints, breaking
@@ -1120,8 +1141,8 @@
           and availability of Internet applications by providing data
           elements that are used by application code. Some
           applications also have their own specialized rendezvous
-          services. For example, to establish an end-to-end SIP call
-          the end-nodes (terminals) will rely on presence and session
+          services. For example, to establish an end-to-end SIP call,
+          the end-nodes (terminals) rely on presence and session
           information supplied by SIP servers.
         </t>
 
@@ -1129,7 +1150,8 @@
           Global rendezvous services are comprised of generic
           technical databases intended to record certain facts about
           the network. The DNS, for example, stores information about
-          which servers provide services for a given name; the RPKI
+          which servers provide services for a given name, and the 
+          Resource Public Key Infrastructure (RPKI) stores information
           about which entities have been allocated IP addresses. To
           offer specialized Internet services and applications,
           different entities rely on these generic records in
@@ -1168,6 +1190,17 @@
             application proxies within their networks, but not
             authoritative servers controlled by others.
           </t>
+          <t>
+            However, if a service is hosted and operated within a
+            jurisdiction where it is considered legitimate, then
+            blocking access at a global rendezvous service 
+            (e.g., one within a jurisdiction where it is considered
+            illegitimate) might deny legitimate services within
+            the legitimate jurisdictions. This type of collateral damage
+            is lessened when blocking is done at a local rendezvous
+            server that only has local impact, rather than at a global
+            rendezvous server with global impact.
+          </t>
         </section>
 
         <section title="Granularity">
@@ -1179,17 +1212,6 @@
             For example, a given address or domain name
             might host both legitimate services as well as services
             that entities desire to block.
-          </t>
-          <t>
-            Furthermore, if a service is hosted and operated within a
-            jurisdiction where it is considered legitimate, then
-            blocking access at a global rendezvous service 
-            (e.g., one within a jurisdiction where it is considered
-            illegitimate) might deny legitimate services within
-            the legitimate jurisdictions. This type of collateral damage
-            is lessened when blocking is done at a local rendezvous
-            server that only has local impact, rather than at a global
-            rendezvous server with global impact.
           </t>
         </section>
 
@@ -1230,7 +1252,7 @@
             seeking to circumvent the blocks may opt to use
             less-secure but unblocked parallel services. As applied to
             the DNS, these considerations are further discussed in
-            <xref target="RFC2826"/> and in
+            RFC 2826 <xref target="RFC2826"/> in
             the advisory <xref target="SAC-056"/>
             from ICANN's Security and Stability Advisory
             Committee (SSAC), and in ISOC's whitepaper on DNS filtering <xref
@@ -1276,7 +1298,7 @@
             required the operators of the parent zones of a target
             name (e.g., "com" for "example.com") to direct queries for
             that name to a set of U.S.-government-operated name servers.
-            Users of other services under a target name (e.g., e-mail)
+            Users of other services (e.g., e-mail) under a target name 
             would thus be unable to locate the servers providing
             services for that name, denying them the ability to access
             these services.
@@ -1297,7 +1319,7 @@
 
           <t>
             The action of the Dutch authorities against the RIPE NCC,
-            where RIPE was ordered to freeze the accounts Internet
+            where RIPE was ordered to freeze the accounts of Internet
             resource holders, is of a similar character. By
             controlling the account holders' WHOIS information, this
             type of action limited the ability of the ISPs in question
@@ -1388,7 +1410,7 @@
             Endpoint-based blocking avoids some of the limitations of
             rendezvous-based blocking: while rendezvous-based blocking
             can only see and affect the rendezvous service at hand
-            (e.g., DNS name resolution), endpoint-based blocking can see into
+            (e.g., DNS name resolution), endpoint-based blocking can potentially see into
             the entire application, across all layers and
             transactions. This visibility can provide endpoint-based
             blocking systems with a much richer set of information for
@@ -1474,7 +1496,7 @@
             Out of the three design patterns, endpoint-based blocking
             is the least likely to cause collateral damage to Internet
             services or the overall Internet architecture. Endpoint-based
-            blocking systems can see into all layers involved in a communication,
+            blocking systems can potentially see into all layers involved in a communication,
             allowing blocking to be narrowly targeted. Adversary
             mobility can be accounted for as soon as reputation
             systems are updated with new adversary information. One
@@ -1524,6 +1546,16 @@
      </t>
 
      <t>
+        We must also consider the possibility that a legitimate
+        administrator of such a firewall could gain access to
+        privacy-sensitive information, such as the bank accounts or health
+        records of users who access such secure sites through
+        the firewall. These privacy considerations motivate
+        legitimate use of secur end-to-end protocols that often
+        make it difficult to enforce granular blocking policies.
+     </t>
+
+     <t>
         When blocking systems are unable to inspect and surgically
         block secure protocols, it is tempting to completely block
         those protocols. For example, a web blocking system that is
@@ -1550,18 +1582,21 @@
 <!-- Updated conclusion text from Eliot Lear, Feb. 4, 2015 -->
       <t>
         Filtering will continue to occur on the Internet.  We conclude that,
-        whenever possible, filtering should be done on the end point.
-        Cooperative end points are most likely to have sufficient contextual
+        whenever possible, filtering should be done on the endpoint.
+        Cooperative endpoints are most likely to have sufficient contextual
         knowledge to effectively target blocking.  It is realistic to expect
-        that at times filtering will not be done on the end points.  In these
+        that at times filtering will not be done on the endpoints.  In these
         cases, promptly informing the endpoint that blocking has occurred
         provides necessary transparency to redress any errors, particularly
         as they relate to any collatoral damage introduced by errant filters.
       </t>
       <t>
-        Black list approaches are often a game of "Cat and Mouse", where those
-        with the content move it around to avoid blocking.  At the same time,
-        white lists provide similar risks because sites that had "acceptable"
+        Blacklist approaches are often a game of "Cat and Mouse", where those
+        with the content move it around to avoid blocking.  Or the content
+        may even be naturally mirrored or cached at other legitimate
+        sites such as the Internet Archive Wayback Machine <xref target="Wayback"/>.
+        At the same time,
+        whitelists provide similar risks because sites that had "acceptable"
         content may become targets for "unacceptable content", and similarly,
         access to perfectly inoffensive and perhaps useful or productive
         content is unnecessarily blocked. 
@@ -1891,6 +1926,15 @@ Suzanne Woolf
           <title>SSAC Advisory on Impacts of Content Blocking via the Domain Name System</title>
           <author/>
           <date day="09" month="October" year="2012"/>
+        </front>
+      </reference>
+
+      <reference anchor="Wayback"
+         target="http://archive.org/web/">
+        <front>
+          <title>Internet Archive Wayback Machine</title>
+          <author/>
+          <date/>
         </front>
       </reference>
 
