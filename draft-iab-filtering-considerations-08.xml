@@ -372,7 +372,6 @@
         seized will simply use a new name.  In other cases, the block
         may only be effective within a region or when specific name
         service infrastructure is used.
-        applications using the seized name can switch to using another
         Seizures can also have overbroad effects, since access
         to content is blocked not only within the jurisdiction of the
         seizure, but globally, even when it may be affirmatively legal
