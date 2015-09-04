@@ -360,7 +360,7 @@
 	Other authorities may require that domains be blocked within
 	their jurisdictions.  Substantial research has been performed
 	on the value and efficacy of such
-	seizures.<xref target="Takedown08"/><xref target="Blacklists14"/>
+	seizures.<xref target="Takedown08"/><xref target="BlackLists14"/>
       </t>
       <t>
         The precise method of how domain names are seized will vary
@@ -781,7 +781,7 @@
             immediate effect, efficacy must be evaluated in terms of
             whether it is easy to circumvent.  Simply doing a one-time
             policy is often unlikely to have lasting efficacy (e.g.,
-            see <xref target="CleanFeed"/> and <xref target="Blacklists14"/>).
+            see <xref target="CleanFeed"/> and <xref target="BlackLists14"/>).
 	    Experience has shown that in general blacklisting requires
             continual maintenance of the blacklist itself, both to add
             new entries for unwanted traffic, and deleting entries
@@ -2072,9 +2072,8 @@ Suzanne Woolf
           <title>Failures in a Hybrid Content Blocking System</title>
           <author fullname="Richard Clayton" initials="R." surname="Clayton"/>
           <date year="2005" />
-
-        <seriesInfo name="Fifth Privacy Enhancing Technologies Workshop, PET" value="2005"/>
 	</front>
+        <seriesInfo name="Fifth Privacy Enhancing Technologies Workshop, PET" value="2005"/>
       </reference>
       <reference anchor="Takedown08"
          target="http://www.econinfosec.org/archive/weis2008/papers/MooreImpact.pdf">
