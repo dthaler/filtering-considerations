@@ -20,6 +20,7 @@
 <!ENTITY RFC6480 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6480.xml">
 <!ENTITY RFC6943 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6943.xml">
 <!ENTITY RFC7288 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7288.xml">
+<!ENTITY RFC1149 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.1149.xml">
 ]>
 <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
 <!-- used by XSLT processors -->
@@ -162,11 +163,14 @@
     "filtering," the active prevention of such communications.
     This document examines several technical approaches to
     Internet blocking and filtering in terms of their alignment
-    with the overall Internet architecture. In general, the
-    approach to blocking and filtering that is most coherent with
+    with the overall Internet architecture. When it is possible to do
+    so, the approach to blocking and filtering that is most coherent with
     the Internet architecture is to inform endpoints about
     potentially undesirable services, so that the communicants can
-    avoid engaging in abusive or objectionable communications.
+    avoid engaging in abusive or objectionable communications.  We
+    observe that certain filtering and blocking approaches can cause
+    unintended consequences to third parties, and we discuss the
+    limits of efficacy of various approaches.
       </t>
     </abstract>
   </front>
@@ -190,18 +194,18 @@
 
       <t>
         Efforts to restrict or deny access to Internet resources and
-        services have evolved over time. As noted in <xref
-        target="RFC4084"/>, some Internet service providers impose
-        restrictions on which applications their customers may use and
-        which traffic they allow on their networks. These restrictions
-        are often imposed with customer consent, where customers may
-        be enterprises or individuals. Increasingly, however, both
-        governmental and private sector entities are seeking to block
-        or filter access to certain content, traffic, or services
-        without the knowledge or agreement of affected users. Where
-        these entities do not directly control networks themselves,
-        they commonly aim to make use of intermediary systems to
-        effectuate the blocking or filtering.
+        services have evolved over time. As noted in
+        <xref target="RFC4084"/>, some Internet service providers
+        impose restrictions on which applications their customers may
+        use and which traffic they allow on their networks. These
+        restrictions are often imposed with customer consent, where
+        customers may be enterprises or individuals. Increasingly,
+        however, governments, service providers and enterprises are
+        seeking to block or filter access to certain content, traffic,
+        or services without the knowledge or agreement of affected
+        users. Where these organizations do not directly control networks
+        themselves, they commonly aim to make use of intermediary
+        systems to effectuate the blocking or filtering.
       </t>
 
       <t>
@@ -240,19 +244,18 @@
       <t>
         Filtering may be considered legal, illegal, ethical, or
         unethical in different places, at different times, and by
-        different parties.  This document is intended for an audience
-        of entities that are conducting filtering or are considering
-        conducting filtering and who want to understand the
-        implications of their decisions with respect to the Internet
-        architecture and the trade-offs that come with each type of
-        filtering strategy.  This document does not present formulas
-        on how to make those trade-offs; it is likely that filtering
-        decisions require knowledge of context-specific details.
-        Whether particular forms of filtering are lawful in particular
-        jurisdictions raises complicated legal questions that are
-        outside the scope of this document. For similar reasons,
-        questions about the ethics of particular forms of filtering
-        are also out of scope.
+        different parties.  This document is intended for those who
+        are conducting filtering or are considering conducting
+        filtering and who want to understand the implications of their
+        decisions with respect to the Internet architecture and the
+        trade-offs that come with each type of filtering strategy.
+        This document does not present formulas on how to make those
+        trade-offs; it is likely that filtering decisions require
+        knowledge of context-specific details.  Whether particular
+        forms of filtering are lawful in particular jurisdictions
+        raises complicated legal questions that are outside the scope
+        of this document. For similar reasons, questions about the
+        ethics of particular forms of filtering are also out of scope.
       </t>
 
 <!-- Per ticket 366, moved to section 4.3.4
@@ -340,17 +343,37 @@
       </t>
 
       <t>
-        Domain Name Seizure: In recent years, U.S. law enforcement
-        authorities have been issuing legal orders to domain name
-        registries to seize domain names associated with the
-        distribution of counterfeit goods and other alleged illegal
-        activity <xref target="US-ICE"/>. When domain names are
-        seized, DNS queries for the seized names are typically
-        redirected to resolve to U.S. government IP addresses that
-        host information about the seizure. The effectiveness of
-        domain seizures is limited by application mobility --
+	<!--
+	    EL: I've updated this section to be more credible.  There
+	    are a myriad of ways to seize a domain, and the U.S. isn't
+	    the only one to do it.  ICANN has a whole process for it.
+	    But its effectiveness is called into question based on the
+	    purpose of the block.  Takedowns are quite important for
+	    certain types of content, but how the takedown occurs is
+	    also important.  This section may require additional work
+	    or shifting of text to other sections.
+	    -->
+        Domain Name Seizure: A number of approaches are used to block
+	or modify resolution of a domain name.  One approach is to
+	make use of ICANN's Uniform Dispute Resolution Policy (URDP)
+	for the purposes of dealing with fraudulent use of a name.
+	Other authorities may require that domains be blocked within
+	their jurisdictions.  Substantial research has been performed
+	on the value and efficacy of such
+	seizures.<xref target="Takedown08"/><xref target="Blacklists14"/>
+      </t>
+      <t>
+        The precise method of how domain names are seized will vary
+        from place to place.  One approach in use is for queries to be
+        redirected to resolve to IP addresses of the authority
+        that hosts information about the seizure.
+	The effectiveness of domain seizures will similarly vary based
+        on the method.  In some cases, the person whose name was
+        seized will simply use a new name.  In other cases, the block
+        may only be effective within a region or when specific name
+        service infrastructure is used.
         applications using the seized name can switch to using another
-        name. Seizures can also have overbroad effects, since access
+        Seizures can also have overbroad effects, since access
         to content is blocked not only within the jurisdiction of the
         seizure, but globally, even when it may be affirmatively legal
         elsewhere <xref target="RojaDirecta"/>. When domain
@@ -394,13 +417,13 @@
     <section title="Characteristics of Blocking Systems">
       <t>
         At a generic level, blocking systems can be characterized by
-        four attributes: the entity that sets the blocking policy, the
+        four attributes: the party who sets the blocking policy, the
         purpose of the blocking, the intended target of the blocking,
         and the Internet component(s) used as the basis of the blocking
         system.
       </t>
 
-      <section title="Entities that set blocking policies">
+      <section title="The party who sets blocking policies">
         <t>
           Parties that institute blocking policies include
           governments, courts, enterprises, network operators, application
@@ -419,10 +442,10 @@
           the entity that enforces the policy.  Such policy might be
           imposed upon the enforcing entity, such as in the case of
           blocking initiated by governments, or the enforcing entity
-          might explicitly choose to use policy set by another enity,
+          might explicitly choose to use policy set by others,
           such as in the case of a reputation system used by a spam
           filter or safe browsing service.  Because a policy might
-          be enforced by different entities, it is best if policy can
+          be enforced by others, it is best if it can
           be expressed in a form that is independent of the enforcing
           technology.
         </t>
@@ -485,7 +508,7 @@
 
       <section title="Intended targets of blocking">
         <t>
-          Entities institute blocking systems so as to target
+          Blocking systems are instituted so as to target
           particular content, services, endpoints, or some combination
           of these. For example, a "content" filtering system used by
           an enterprise might block access to specific URIs whose
@@ -502,12 +525,14 @@
           As discussed in <xref target="evaluation" />, the design of
           a blocking system may affect content, services, or endpoints
           other than those that are the intended targets. For example,
-          the domain name seizures described above target particular
-          web pages associated with illegal activity, but by removing
-          the domains from use, they affect all services made
-          available by the hosts associated with those names,
-          including mail services and web services that may be unrelated to the
-          illegal activity.
+          when domain name seizures described above are intended to
+          address specific web pages associated with illegal activity,
+          by removing the domains from use, they affect all services
+          made available by the hosts associated with those names,
+          including mail services and web services that may be
+          unrelated to the illegal activity.  Depending on where the
+          block is imposed within the DNS hierarchy, entirely
+          unrelated organizations may be impacted.
         </t>
       </section>
 
@@ -535,7 +560,12 @@
               identified by identifiers than are more "human-friendly"
               than IP addresses.  Rendezvous services allow one
               endpoint to figure out how to contact another endpoint
-              based on an identifier.
+              based on an identifier.  An example of a rendezvous
+              service is the domain name system.  Distributed hash
+              tables (DHTs) have also been used as rendezvous
+              services.
+
+	      
             </t>
           </list>
         </t>
@@ -598,7 +628,7 @@
         </t>
 
         <t>
-          Most entities that desire to block communications will have
+          Those who desire to block communications will typically have
           access to only one or two components, and therefore their
           choices for how to effectuate blocking will be limited. End
           users and application providers can usually only control
@@ -622,11 +652,11 @@
           each of the three patterns -- network services, rendezvous
           services, and endpoints -- are evaluated for their technical
           and architectural implications. The analysis is as agnostic
-          as possible as to which kind of entity sets the blocking
+          as possible as to who sets the blocking
           policy (government, end user, network operator, application
           provider, or enterprise), but in some cases the way in which
-          a particular blocking design pattern is used might differ
-          depending on the entity that desires to block. For example,
+          a particular blocking design pattern is used might differ,
+          depending on the who desires a block. For example,
           a network-based firewall provided by an ISP that parents can
           elect to use for parental control purposes will likely
           function differently from one that all ISPs in a particular
@@ -656,7 +686,7 @@
             networks and applications, which means that the impact of
             a blocking system will only be within a defined topological scope. For
             example, blocking within an access network will only
-            affect a relatively small, well-defined set of users
+            affect a well-defined set of users
             (namely, those connected to the access network).
             <!-- but can affect all applications for those users. -->
             Blocking effectuated by an application provider can affect users
@@ -671,17 +701,29 @@
                  directions. 
               -->
           </t>
+	  <!--  EL I've updated the text below to be specific.  The
+	  IAB is supposed to be technical.  Showing a little geek
+	  without going into gory detail actually gives us street cred.
+	    -->
           <t>
             Blocking systems are generally viewed as less
             objectionable if the scope of their impact is as narrow as
-            possible while still being effective.
-            Design flaws in blocking systems may cause the
-            effects of blocking to be overbroad. For example, web
-            filtering systems in India and China have been shown to
-            cause "collateral damage" by unwittingly blocking users in
-            Oman and the U.S. from accessing web sites in Germany and
-            Korea <xref target="IN-OM-filtering"/><xref
-            target="CCS-GFC-collateral-damage"/>.
+            possible while still being effective.  As mentioned
+            previously, enterprise blocking systems are commonly
+            deployed, and will generally have impact on enterprise
+            users.  However, design flaws in blocking systems may cause the
+            effects of blocking to be overbroad. For example, a
+            at least one service provider blocking content in accordance
+            with a regulation has ended up blocking content for
+            downstream service providers because it filtered
+            routes to particular systems and did not distribute the
+            original information to downstream service providers in
+            other jurisdictions.<xref target="IN-OM-filtering"/>
+            Other service providers have accidentally leaked such
+            black hole routes beyond the
+            jurisdiction.<xref target="NW08"/>
+	    A substantial amount of work has gone into BGP security to
+	    avoid such attacks, but deployment of such systems lags.
           </t>
         </section>
 
@@ -735,11 +777,20 @@
 
         <section title="Efficacy: How easy is it for a resource or service to avoid being blocked?">
           <t>
-            Although blocking a resource or service might have some immediate
-            effect, efficacy must be evaluated in terms of whether it
-            is easy to circumvent.  Simply doing a one-time policy
-            is often unlikely to have lasting efficacy
-            (e.g., see <xref target="CleanFeed"/>).
+            Although blocking a resource or service might have some
+            immediate effect, efficacy must be evaluated in terms of
+            whether it is easy to circumvent.  Simply doing a one-time
+            policy is often unlikely to have lasting efficacy (e.g.,
+            see <xref target="CleanFeed"/> and <xref target="Blacklists14"/>).
+	    Experience has shown that in general blacklisting requires
+            continual maintenance of the blacklist itself, both to add
+            new entries for unwanted traffic, and deleting entries
+            when offending content is removed.  Experience also shows
+            that depending on the nature of the block it may be
+            difficult to determine when to unblock.  For instance, if
+            a host is blocked because it has been compromised and used
+            as a source of attack, it may not be plainly evident when
+            that site has been fixed.
           </t>
           <t>
             For blacklist-style blocking, the distributed and mobile
@@ -766,27 +817,38 @@
             blocking from being effective.
           </t>
           <t>
+	    <!-- EL I've removed the reference to Marc's draft.
+		 -->
             In the presence of either blacklist or whitelist systems,
             users may choose to use different sets of protocols or
             otherwise alter their traffic characteristics to
-            circumvent filters. As discussed in <xref
-            target="I-D.blanchet-iab-internetoverport443" />, many
-            applications shift their traffic to port 80 or 443 when
-            other ports are blocked. This sort of circumvention based
+            circumvent filters. In some cases, 
+            applications may shift their traffic to port 80 or 443 when
+            other ports are blocked.
+	    <!-- EL The following isn't true.  One of the easiest
+		 things in the world to do is to block a port. This is
+		 one of the reasons Belshe started SPDY.  If we want
+		 we could reference the relevant IETF proceedings
+		 where he says this.  It was before Snowden.
+		 
+            This sort of circumvention based
             on shifting ports can succeed because port selection is
             designed to only be meaningful to endpoints, not to the
-            network. If voice communication based on
-            SIP <xref target="RFC3261" /> is blocked, users are likely
-            to use proprietary protocols that allow them to talk to
-            each other. Some filtering systems are only capable of
-            identifying IPv4 traffic and therefore by shifting to
-            IPv6 users may be able to evade filtering. Using IPv6
-            with header options, using multiple layers of tunnels,
-            or using encrypted tunnels can also make it more challenging
-            for blocking systems to find transport ports within packets,
-            making port-based blocking more difficult. Thus distribution
-            and mobility can hamper
-            efforts to block communications in a number of ways.
+            network.
+	    --> One of the primary motivations for encrypted HTTP
+	    version 2 had to do with blocking and improper processing
+	    of unencrypted HTTP/1.1 traffic.  If voice communication
+	    based on SIP <xref target="RFC3261" /> is blocked, users
+	    are likely to use proprietary protocols that allow them to
+	    talk to each other. Some filtering systems are only
+	    capable of identifying IPv4 traffic and therefore by
+	    shifting to IPv6 users may be able to evade
+	    filtering. Using IPv6 with header options, using multiple
+	    layers of tunnels, or using encrypted tunnels can also
+	    make it more challenging for blocking systems to find
+	    transport ports within packets, making port-based blocking
+	    more difficult. Thus distribution and mobility can hamper
+	    efforts to block communications in a number of ways.
           </t>
         </section>
 
@@ -1050,19 +1112,29 @@
           <t>
             Thus, in principle in a blacklist system it is impossible
             to block tunneled traffic through an intermediary device
-            without blocking all secure traffic. (The only limitation
-            in practice is the requirement for special software on the
-            client.) In most cases, blocking all secure traffic is an
-            unacceptable consequence of blocking, since security is
-            often required for services such as online commerce,
-            enterprise VPNs, and management of critical
-            infrastructure. If governments or network operators were
-            to force these services to use insecure protocols so as to
-            effectuate blocking, they would expose their users to the
-            various attacks that the security protocols were put in
-            place to prevent.
+            without blocking all secure traffic from that system. (The
+            only limitation in practice is the requirement for special
+            software on the client.) 
+<!--  EL: We can't really say this.  It may or may not be acceptable
+            to a government.  What we can say follows instead.
+	    In most cases, blocking all
+            secure traffic is an unacceptable consequence of blocking,
+            since security is often required for services such as
+            online commerce, enterprise VPNs, and management of
+            critical infrastructure.
+	    -->
+            Those who require that secure traffic be blocked from such
+            sites risk blocking content that would be valuable to
+            their users, perhaps impeding substantial economic
+            activity.  Conversely, those who are hosting a myriad of
+            content have an incentive to see that law abiding content
+            does not end up being blocked.
+</t><t> Governments and network operators should, however, take care
+            not to encourage the use of insecure communications in the
+            naming of security, as doing so will invariably expose
+            their users to the various attacks that the security
+            protocols were put in place to prevent.
           </t>
-
           <t>
             Some operators may assume that only blocking access to
             resources available via unsecure channels is sufficient
@@ -1085,7 +1157,6 @@
             target="Tor"/>. Thus, network-based blocking becomes less
             effective over time.
           </t>
-
           <t>
             Network-based blocking is a key contributor to the arms
             race that has led to the development of these kinds of
@@ -1105,6 +1176,18 @@
             to circumvent it, this cat-and-mouse game is an inevitable
             by-product of this form of blocking.
           </t>
+	  <t>One reason above all stands as an enormous challenge to
+	  network-based blocking: the Internet was designed with the
+	  premise that people will want to connect and communicate.
+	  The layering model allows for near infinite levels of
+	  tunneling.  Not only is this demonstrated in Tor, but
+	  perhaps more amusingly in our own RFC series through IP over
+	  carrier pidgeon.<xref target="RFC1149"/> Because of this
+	  fundamental layering approach nearly any authorized avenue
+	  of communication can be used as a transport for unauthorized
+	  avenues. This same "problem" permits communications to
+	  succeed in the most challenging of environments.
+	  </t>
         </section>
 
         <section title="Summary">
@@ -1747,7 +1830,7 @@ Suzanne Woolf
       &RFC6698;
       &RFC6943;
       &RFC7288;
-
+      &RFC1149;
       <?rfc include="http://xml.resource.org/public/rfc/bibxml3/reference.I-D.blanchet-iab-internetoverport443.xml"?>
 
       <reference anchor="RojaDirecta"
@@ -1983,17 +2066,52 @@ Suzanne Woolf
         </front>
         <seriesInfo name="Telecommunications Policy" value="38:383-392"/>
       </reference>
-
       <reference anchor="CleanFeed"
          target="http://www.cl.cam.ac.uk/~rnc1/cleanfeed.pdf">
         <front>
           <title>Failures in a Hybrid Content Blocking System</title>
           <author fullname="Richard Clayton" initials="R." surname="Clayton"/>
           <date year="2005" />
-        </front>
-        <seriesInfo name="Fifth Privacy Enhancing Technologies Workshop, PET" value="2005"/>
-      </reference>
 
+        <seriesInfo name="Fifth Privacy Enhancing Technologies Workshop, PET" value="2005"/>
+	</front>
+      </reference>
+      <reference anchor="Takedown08"
+         target="http://www.econinfosec.org/archive/weis2008/papers/MooreImpact.pdf">
+        <front>
+          <title>The Impact of Incentives on Notice and Take-down </title>
+	  <author fullname="Tyler Moore" initials="T." surname="Moore"/>
+          <author fullname="Richard Clayton" initials="R." surname="Clayton"/>
+          <date year="2008" />
+        </front>
+        <seriesInfo name="Workshop on the Economics of Information
+        Security" value="2008"/>
+      </reference>
+      <reference anchor="BlackLists14"
+         target="http://www.econinfosec.org/archive/weis2014/papers/Chachra-WEIS2014.pdf">
+        <front>
+          <title>Empirically Characterizing Domain Abuse and the
+          Revenue Impact of Blacklisting</title>
+	  <author fullname="Neha Chachra" initials="N." surname="Chachra"/>
+	  <author fullname="Damon McCoy" initials="D." surname="McCoy"/>
+	  <author fullname="Stefan Savage" initials="S." surname="Savage"/>
+	  <author fullname="Geoffrey M. Voelker" initials="G.M." surname="Voelker"/>
+          <date year="2014" />
+        </front>
+        <seriesInfo name="Workshop on the Economics of Information
+        Security" value="2014"/>
+      </reference>
+      <reference anchor="NW08"
+        target="http://www.networkworld.com/article/2284273/software/youtube-pakistan-incident--could-something-similar-whack-your-site-.html">
+	<front>
+	  <title>YouTube/Pakistan incident: Could something similar
+	    whack your site?</title>
+	  <author fullname="Carolyn Duffy Marsan" initials="C.D"
+		  surname="Marsan"/>
+	  <date year="2008" month="March"/>
+	</front>
+	<seriesInfo name="NetWorld" value="2008"/>
+	</reference>
     </references>
   </back>
 </rfc>
