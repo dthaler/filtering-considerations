@@ -454,7 +454,8 @@
 	  and implementation.
 	  Each of those steps is a potential source of unintended consequences
 	  as discussed in this document.
-        <t>
+        </t>
+	<t>
           In some cases, the policy setting entity is the same as the
           entity that enforces the policy.
           For example, a network operator might install a firewall in
