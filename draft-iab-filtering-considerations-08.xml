@@ -419,6 +419,13 @@
 	<xref target='RFC2827'/> <xref target='RFC3704'/> as a means to prevent
 	source address spoofing which is used for some security attacks.
       </t>
+      <t>
+	Data loss prevention: Enterprise and other networks are concerned with
+	potential leaking of confidential information, whether accidental or
+	intentional. Some of the tools used for this are similar to the
+	main subject of this document of blocking and filtering. In particular,
+	enterprise proxies might be part of a DLP solution.
+      </t>
     </section>
 
     <section title="Characteristics of Blocking Systems">
