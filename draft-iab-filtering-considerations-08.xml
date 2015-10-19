@@ -2,6 +2,8 @@
 <!-- This template is for creating an Internet Draft using xml2rfc,
      which is available here: http://xml2rfc.ietf.org. -->
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
+<!ENTITY RFC2827 PUBLIC "" "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2827.xml">
+<!ENTITY RFC3704 PUBLIC "" "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.3704.xml">
 <!ENTITY RFC1122 PUBLIC "" "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.1122.xml">
 <!ENTITY RFC2775 PUBLIC "" "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2775.xml">
 <!ENTITY RFC2826 PUBLIC "" "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2826.xml">
@@ -411,6 +413,11 @@
         working group might be subject to government manipulation as
         well <xref target="RFC6480"/>, potentially for the purpose of
         denying targeted networks access to the Internet.
+      </t>
+      <t>
+	Ingress filtering: Network service providers use Ingress Filtering
+	<xref target='RFC2827'/> <xref target='RFC3704'/> as a means to prevent
+	source address spoofing which is used for some security attacks.
       </t>
     </section>
 
@@ -2143,6 +2150,8 @@ Suzanne Woolf
         </front>
         <seriesInfo name="NetWorld" value="2008"/>
         </reference>
+      &RFC2827;
+      &RFC3704;
     </references>
   </back>
 </rfc>
