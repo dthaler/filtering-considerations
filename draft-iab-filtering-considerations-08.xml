@@ -336,9 +336,10 @@
         variety of criteria and information sources to decide whether
         a given message is spam. For example, DNS Black Lists
         use the reverse DNS to flag whether an IP address is a known
-        spam source <xref target="RFC5782"/>. Spam filters are
-        typically either installed on user devices (e.g., in a mail
-        client) or operated by a mail domain on behalf of users.
+        spam source <xref target="RFC5782"/>. Spam filters
+	can be installed on user devices (e.g., in a mail
+	client), operated by a mail domain on behalf of users, or outsourced
+	to a third party that act as intermediate MX proxy
       </t>
 
       <t>
@@ -426,8 +427,19 @@
         <t>
           Parties that institute blocking policies include
           governments, courts, enterprises, network operators, reputation
-	  trackers, application providers, and individual end users. 
+	  trackers, application providers, and individual end users. A
+	  government might create laws based on cultural norms and/or
+	  their elected mandate. Enterprises might use cultural, industry,
+	  or legal norms to guide their policies.
         </t>
+	<t>
+	  There can be several steps of translation and transformation
+	  from the original intended purpose first to laws, then to (government)
+	  regulation, followed by high-level policies in, e.g.,
+	  network operators, and from those policies to filtering architecture
+	  and implementation.
+	  Each of those steps is a potential source of unintended consequences
+	  as discussed in this document.
         <t>
           In some cases, the policy setting entity is the same as the
           entity that enforces the policy.
@@ -466,8 +478,8 @@
             <t>
               Restricting objectionable content or services. Certain
               communications may be viewed as undesirable, harmful, or
-              illegal by particular governments, enterprises, or users
-              (e.g., parents). Governments may seek to block
+              illegal by particular governments, enterprises, or users.
+              Governments may seek to block
               communications that are deemed to be defamation, hate
               speech, obscenity, intellectual property infringement,
               or otherwise objectionable. Enterprises may seek to
@@ -574,7 +586,7 @@
           a AAAA query to obtain the IP address for the server name
           "example.com".  The client then establishes a connection to
           the server, and sends the actual HTTP request.  The server
-          then responds to the HTTP request.
+          endpoint then responds to the HTTP request.
         </t>
 
         <t>
@@ -602,7 +614,7 @@
             </t>
 
             <t>
-              [Endpoint] Preventing the client from making a DNS request for example.com
+              [Endpoint] Preventing the client from making the DNS request needed to resolve example.com
             </t>
             <t>
               [Network] Preventing the request from reaching the server
@@ -611,13 +623,13 @@
               [Network] Preventing the response from reaching the client
             </t>
             <t>
-              [Network] Preventing the client from reaching the DNS server
+              [Network] Preventing the client from reaching the DNS servers
             </t>
             <t>
-              [Network] Preventing the DNS response from reaching the client
+              [Network] Preventing the DNS responses from reaching the client
             </t>
             <t>
-              [Rendezvous] Preventing the DNS server from providing
+              [Rendezvous] Preventing the DNS servers from providing
               the client the correct IP address of the server
             </t>
           </list>
@@ -704,7 +716,9 @@
           <t>
             Blocking systems are generally viewed as less
             objectionable if the scope of their impact is as narrow as
-            possible while still being effective.  As mentioned
+            possible while still being effective, and as long as the impact
+	    of the blocking is within the administrative realm of the policy
+	    setting entity.  As mentioned
             previously, enterprise blocking systems are commonly
             deployed, and will generally have impact on enterprise
             users.  However, design flaws in blocking systems may cause the
@@ -893,7 +907,7 @@
             that circumvent the blocking mechanism. For example,
             Clayton <xref target="CleanFeed"/> showed how special
             treatment in one blocking system could be detected by
-            end users in order to efficiently locate illegal websites,
+            end users in order to efficiently locate illegal web sites,
             which was thus counter-productive to the policy objective
             of the blocking mechanism.
           </t>
@@ -975,12 +989,15 @@
             For residential or consumer networks with many egress
             points, the first step to obtaining this traffic is
             simply gaining access to the constituent packets. The
-            Internet is designed to deliver packets hop-by-hop from
+            Internet is designed to deliver packets independently from
             source to destination -- not to any particular point along
-            the way. In practice, inter-network routing is often
+            the way. Thus the sequence of packets from the sender can only be
+	    reliably reconstructed at the intended receiver. In addition,
+	    inter-network routing is often
             asymmetric, and for sufficiently complex local networks,
             intra-network traffic flows can be asymmetric as well
-            <xref target="asymmetry" />.
+            <xref target="asymmetry" />. Thus packets in the reverse direction
+	    use a different sent of paths than the forward direction.
           </t>
 
           <t>
@@ -1077,7 +1094,9 @@
             If application content is encrypted with a security
             protocol such as IPsec or TLS, then the intermediary will
             require the ability to decrypt the packets to examine
-            application content. Since security protocols are generally designed
+            application content, or resort to statistical methods to guess
+	    what the content is.
+	    Since security protocols are generally designed
             to provide end-to-end security (i.e., to prevent
             intermediaries from examining content), the intermediary
             would need to masquerade as one of the endpoints, breaking
@@ -1094,7 +1113,8 @@
             If the intermediary is unable to decrypt the security
             protocol, then its blocking determinations for secure
             sessions can only be based on unprotected attributes, such
-            as IP addresses, protocol IDs and port numbers. Some
+            as IP addresses, protocol IDs and port numbers, plus
+	    packet sizes, timing etc. Some
             blocking systems today still attempt to block based on
             these attributes, for example by blocking TLS traffic to
             known proxies that could be used to tunnel through the
@@ -1102,12 +1122,13 @@
           </t>
 
           <t>
-            However, as the Telex project recently demonstrated, if an
+            However, as the Telex project  <xref
+            target="Telex"/> recently demonstrated, if an
             endpoint cooperates with a relay in the network (e.g., a
             Telex station), it can create a TLS tunnel that is
-            indistinguishable from legitimate traffic <xref
-            target="Telex"/>. For example, if an ISP used by a banking
-            website were to operate a Telex station at one of its
+            indistinguishable from legitimate traffic. For example, if an ISP
+	    used by a banking
+            web site were to operate a Telex station at one of its
             routers, then a blocking system would be unable to
             distinguish legitimate encrypted banking traffic from
             Telex-tunneled traffic (potentially carrying content that
@@ -1575,6 +1596,11 @@
             requests from governments or other parties can sometimes motivate
             those latter parties to engage in blocking elsewhere within the Internet.
           </t>
+	  <t>
+	    If a service is to be blocked, the best way of doing
+	    that is to go to the server endpoint and
+	    simply turning the service off.
+	  </t>
         </section>
 
         <section title="Summary">
@@ -1582,8 +1608,9 @@
             Out of the three design patterns, endpoint-based blocking
             is the least likely to cause collateral damage to Internet
             services or the overall Internet architecture. Endpoint-based
-            blocking systems can potentially see into all layers involved in a communication,
-            allowing blocking to be narrowly targeted. Adversary
+            blocking systems can potentially see into all layers involved in a
+	    communication, allowing blocking to be narrowly targeted and can
+	    minimize unintended consequences. Adversary
             mobility can be accounted for as soon as reputation
             systems are updated with new adversary information. One
             potential drawback of endpoint-based blocking is that
@@ -1613,7 +1640,7 @@
         For example, some enterprise firewalls will dynamically create
         TLS certificates under a trust anchor recognized by endpoints
         subject to blocking. These certificates allow the firewall to
-        authenticate as any website, so that it can act as a
+        authenticate as any web site, so that it can act as a
         man-in-the-middle on TLS connections passing through the
         firewall. This is not unlike an external attacker using
         compromised certificates to intercept TLS connections.
@@ -1670,7 +1697,8 @@
         Filtering will continue to occur on the Internet.  We conclude that,
         whenever possible, filtering should be done on the endpoint.
         Cooperative endpoints are most likely to have sufficient contextual
-        knowledge to effectively target blocking.  It is realistic to expect
+        knowledge to effectively target blocking, hence such blocking minimizes
+	unintended consequences.  It is realistic to expect
         that at times filtering will not be done on the endpoints.  In these
         cases, promptly informing the endpoint that blocking has occurred
         provides necessary transparency to redress any errors, particularly
