@@ -813,30 +813,39 @@
             blocking from being effective.
           </t>
           <t>
-            <!-- EL I've removed the reference to Marc's draft.
-                 -->
             In the presence of either blacklist or whitelist systems,
-            users may choose to use different sets of protocols or
+	    there are several ways in which a user or application can try to
+	    circumvent the filters.
+          </t>
+          <t>
+            The users may choose to use different sets of protocols or
             otherwise alter their traffic characteristics to
-            circumvent filters. In some cases, 
+            circumvent the filters. In some cases, 
             applications may shift their traffic to port 80 or 443 when
             other ports are blocked.
-            <!-- EL The following isn't true.  One of the easiest
-                 things in the world to do is to block a port. This is
-                 one of the reasons Belshe started SPDY.  If we want
-                 we could reference the relevant IETF proceedings
-                 where he says this.  It was before Snowden.
-
-            This sort of circumvention based
-            on shifting ports can succeed because port selection is
-            designed to only be meaningful to endpoints, not to the
-            network.
-            --> One of the primary motivations for encrypted HTTP
+	    Or services may be tunneled within other services,
+	    proxied by a collaborating external host (e.g., an anonymous
+	    redirector),
+	    or simply run over an alternate port (e.g., port 8080 vs port
+	    80 for HTTP). Another means of circumvention is alteration of
+	    the service behavior to use a dynamic port negotiation phase,
+	    in order to avoid use of a constant port address.
+          </t>
+          <t>
+            One of the primary motivations for encrypted HTTP
             version 2 had to do with blocking and improper processing
-            of unencrypted HTTP/1.1 traffic.  If voice communication
+            of unencrypted HTTP/1.1 traffic.  Users or applications shifting
+	    their traffic to encrypted HTTP has the effect of circumventing
+	    filters that depend on the HTTP plaintext payload.
+          </t>
+          <t>
+	    If voice communication
             based on SIP <xref target="RFC3261" /> is blocked, users
-            are likely to use proprietary protocols that allow them to
-            talk to each other. Some filtering systems are only
+            are likely to use applications which use proprietary protocols
+	    that allow them to talk to each other.
+          </t>
+          <t>
+	    Some filtering systems are only
             capable of identifying IPv4 traffic and therefore by
             shifting to IPv6 users may be able to evade
             filtering. Using IPv6 with header options, using multiple
@@ -2038,7 +2047,7 @@ Suzanne Woolf
       </reference>
 
       <reference anchor="asymmetry"
-         target="http://dl.acm.org/citation.cfm?id=1815506">
+         target="http://www.caida.org/publications/papers/2010/estimating_routing_symmetry/estimating_routing_symmetry.pdf">
         <front>
           <title>Estimating routing symmetry on single links by passive flow measurements</title>
           <author fullname="Wolfgang John" initials="W." surname="John"/>
