@@ -196,7 +196,7 @@
         Efforts to restrict or deny access to Internet resources and
         services have evolved over time. As noted in
         <xref target="RFC4084"/>, some Internet service providers
-        impose restrictions on which applications their customers may
+        perform filtering to restrict which applications their customers may
         use and which traffic they allow on their networks. These
         restrictions are often imposed with customer consent, where
         customers may be enterprises or individuals. Increasingly,
@@ -296,7 +296,8 @@
           <t> Stateless Packet Filtering: Stateless packet filters block
               according to content-neutral rules, e.g., blocking all
               inbound connections or outbound connections on certain ports,
-              protocols, or network-layer addresses.
+              protocols, or network-layer addresses. For example, blocking
+	      outbound connections to port 25.
           </t>
           <t> Stateful Packet Filtering: More advanced configurations
               require keeping state used to enforce flow-based policies,
@@ -324,10 +325,8 @@
         address and/or port), or else obtain a trust anchor certificate that is
         trusted by endpoints (and thus act as a man in the
         middle). These filtering systems often take the form of
-        "portals" or "enterprise proxies."  These portals present
-        their own HTTPS certificates that are invalid for any given
-        domain according to normal validation rules, but may still be
-        trusted if the administrator installs a security exception. (See
+        "portals" or "enterprise proxies" presenting their own, dynamically
+	generated HTTPS certificates. (See
         further discussion in <xref target="security" />.)
       </t>
 
@@ -426,8 +425,8 @@
       <section title="The party who sets blocking policies">
         <t>
           Parties that institute blocking policies include
-          governments, courts, enterprises, network operators, application
-          providers, and individual end users. 
+          governments, courts, enterprises, network operators, reputation
+	  trackers, application providers, and individual end users. 
         </t>
         <t>
           In some cases, the policy setting entity is the same as the
@@ -1376,7 +1375,7 @@
             required the operators of the parent zones of a target
             name (e.g., "com" for "example.com") to direct queries for
             that name to a set of U.S.-government-operated name servers.
-            Users of other services (e.g., e-mail) under a target name 
+            Users of other services (e.g., email) under a target name 
             would thus be unable to locate the servers providing
             services for that name, denying them the ability to access
             these services.
