@@ -299,7 +299,7 @@
               according to content-neutral rules, e.g., blocking all
               inbound connections or outbound connections on certain ports,
               protocols, or network-layer addresses. For example, blocking
-	      outbound connections to port 25.
+              outbound connections to port 25.
           </t>
           <t> Stateful Packet Filtering: More advanced configurations
               require keeping state used to enforce flow-based policies,
@@ -328,7 +328,7 @@
         trusted by endpoints (and thus act as a man in the
         middle). These filtering systems often take the form of
         "portals" or "enterprise proxies" presenting their own, dynamically
-	generated HTTPS certificates. (See
+        generated HTTPS certificates. (See
         further discussion in <xref target="security" />.)
       </t>
 
@@ -339,9 +339,9 @@
         a given message is spam. For example, DNS Black Lists
         use the reverse DNS to flag whether an IP address is a known
         spam source <xref target="RFC5782"/>. Spam filters
-	can be installed on user devices (e.g., in a mail
-	client), operated by a mail domain on behalf of users, or outsourced
-	to a third party that act as intermediate MX proxy
+        can be installed on user devices (e.g., in a mail
+        client), operated by a mail domain on behalf of users, or outsourced
+        to a third party that acts as an intermediate MX proxy.
       </t>
 
       <t>
@@ -415,16 +415,16 @@
         denying targeted networks access to the Internet.
       </t>
       <t>
-	Ingress filtering: Network service providers use Ingress Filtering
-	<xref target='RFC2827'/> <xref target='RFC3704'/> as a means to prevent
-	source address spoofing which is used as a part of other attacks.
+        Ingress filtering: Network service providers use Ingress Filtering
+        <xref target='RFC2827'/> <xref target='RFC3704'/> as a means to prevent
+        source address spoofing which is used as a part of other attacks.
       </t>
       <t>
-	Data loss prevention: Enterprise and other networks are concerned with
-	potential leaking of confidential information, whether accidental or
-	intentional. Some of the tools used for this are similar to the
-	main subject of this document of blocking and filtering. In particular,
-	enterprise proxies might be part of a DLP solution.
+        Data loss prevention (DLP): Enterprise and other networks are concerned with
+        potential leaking of confidential information, whether accidental or
+        intentional. Some of the tools used for this are similar to the
+        main subject of this document of blocking and filtering. In particular,
+        enterprise proxies might be part of a DLP solution.
       </t>
     </section>
 
@@ -441,21 +441,21 @@
         <t>
           Parties that institute blocking policies include
           governments, courts, enterprises, network operators, reputation
-	  trackers, application providers, and individual end users. A
-	  government might create laws based on cultural norms and/or
-	  their elected mandate. Enterprises might use cultural, industry,
-	  or legal norms to guide their policies.
+          trackers, application providers, and individual end users. A
+          government might create laws based on cultural norms and/or
+          their elected mandate. Enterprises might use cultural, industry,
+          or legal norms to guide their policies.
         </t>
-	<t>
-	  There can be several steps of translation and transformation
-	  from the original intended purpose first to laws, then to (government)
-	  regulation, followed by high-level policies in, e.g.,
-	  network operators, and from those policies to filtering architecture
-	  and implementation.
-	  Each of those steps is a potential source of unintended consequences
-	  as discussed in this document.
+        <t>
+          There can be several steps of translation and transformation
+          from the original intended purpose first to laws, then to (government)
+          regulation, followed by high-level policies in, e.g.,
+          network operators, and from those policies to filtering architecture
+          and implementation.
+          Each of those steps is a potential source of unintended consequences
+          as discussed in this document.
         </t>
-	<t>
+        <t>
           In some cases, the policy setting entity is the same as the
           entity that enforces the policy.
           For example, a network operator might install a firewall in
@@ -479,7 +479,7 @@
 
       <section title="Purposes of blocking">
         <t>
-	  There are a variety of motivations to filter:
+          There are a variety of motivations to filter:
         </t>
         <t>
           <list style ="symbols">
@@ -732,8 +732,8 @@
             Blocking systems are generally viewed as less
             objectionable if the scope of their impact is as narrow as
             possible while still being effective, and as long as the impact
-	    of the blocking is within the administrative realm of the policy
-	    setting entity.  As mentioned
+            of the blocking is within the administrative realm of the policy
+            setting entity.  As mentioned
             previously, enterprise blocking systems are commonly
             deployed, and will generally have impact on enterprise
             users.  However, design flaws in blocking systems may cause the
@@ -843,8 +843,8 @@
           </t>
           <t>
             In the presence of either blacklist or whitelist systems,
-	    there are several ways in which a user or application can try to
-	    circumvent the filters.
+            there are several ways in which a user or application can try to
+            circumvent the filters.
           </t>
           <t>
             The users may choose to use different sets of protocols or
@@ -852,29 +852,29 @@
             circumvent the filters. In some cases, 
             applications may shift their traffic to port 80 or 443 when
             other ports are blocked.
-	    Or services may be tunneled within other services,
-	    proxied by a collaborating external host (e.g., an anonymous
-	    redirector),
-	    or simply run over an alternate port (e.g., port 8080 vs port
-	    80 for HTTP). Another means of circumvention is alteration of
-	    the service behavior to use a dynamic port negotiation phase,
-	    in order to avoid use of a constant port address.
+            Or services may be tunneled within other services,
+            proxied by a collaborating external host (e.g., an anonymous
+            redirector),
+            or simply run over an alternate port (e.g., port 8080 vs port
+            80 for HTTP). Another means of circumvention is alteration of
+            the service behavior to use a dynamic port negotiation phase,
+            in order to avoid use of a constant port address.
           </t>
           <t>
             One of the primary motivations for encrypted HTTP
             version 2 had to do with blocking and improper processing
             of unencrypted HTTP/1.1 traffic.  Users or applications shifting
-	    their traffic to encrypted HTTP has the effect of circumventing
-	    filters that depend on the HTTP plaintext payload.
+            their traffic to encrypted HTTP has the effect of circumventing
+            filters that depend on the HTTP plaintext payload.
           </t>
           <t>
-	    If voice communication
+            If voice communication
             based on SIP <xref target="RFC3261" /> is blocked, users
             are likely to use applications which use proprietary protocols
-	    that allow them to talk to each other.
+            that allow them to talk to each other.
           </t>
           <t>
-	    Some filtering systems are only
+            Some filtering systems are only
             capable of identifying IPv4 traffic and therefore by
             shifting to IPv6 users may be able to evade
             filtering. Using IPv6 with header options, using multiple
@@ -1007,12 +1007,12 @@
             Internet is designed to deliver packets independently from
             source to destination -- not to any particular point along
             the way. Thus the sequence of packets from the sender can only be
-	    reliably reconstructed at the intended receiver. In addition,
-	    inter-network routing is often
+            reliably reconstructed at the intended receiver. In addition,
+            inter-network routing is often
             asymmetric, and for sufficiently complex local networks,
             intra-network traffic flows can be asymmetric as well
             <xref target="asymmetry" />. Thus packets in the reverse direction
-	    use a different sent of paths than the forward direction.
+            use a different sent of paths than the forward direction.
           </t>
 
           <t>
@@ -1110,8 +1110,8 @@
             protocol such as IPsec or TLS, then the intermediary will
             require the ability to decrypt the packets to examine
             application content, or resort to statistical methods to guess
-	    what the content is.
-	    Since security protocols are generally designed
+            what the content is.
+            Since security protocols are generally designed
             to provide end-to-end security (i.e., to prevent
             intermediaries from examining content), the intermediary
             would need to masquerade as one of the endpoints, breaking
@@ -1129,7 +1129,7 @@
             protocol, then its blocking determinations for secure
             sessions can only be based on unprotected attributes, such
             as IP addresses, protocol IDs and port numbers, plus
-	    packet sizes, timing etc. Some
+            packet sizes, timing etc. Some
             blocking systems today still attempt to block based on
             these attributes, for example by blocking TLS traffic to
             known proxies that could be used to tunnel through the
@@ -1142,7 +1142,7 @@
             endpoint cooperates with a relay in the network (e.g., a
             Telex station), it can create a TLS tunnel that is
             indistinguishable from legitimate traffic. For example, if an ISP
-	    used by a banking
+            used by a banking
             web site were to operate a Telex station at one of its
             routers, then a blocking system would be unable to
             distinguish legitimate encrypted banking traffic from
@@ -1611,11 +1611,11 @@
             requests from governments or other parties can sometimes motivate
             those latter parties to engage in blocking elsewhere within the Internet.
           </t>
-	  <t>
-	    If a service is to be blocked, the best way of doing
-	    that is to go to the server endpoint and
-	    simply turning the service off.
-	  </t>
+          <t>
+            If a service is to be blocked, the best way of doing
+            that is to go to the server endpoint and
+            simply turn the service off.
+          </t>
         </section>
 
         <section title="Summary">
@@ -1624,8 +1624,8 @@
             is the least likely to cause collateral damage to Internet
             services or the overall Internet architecture. Endpoint-based
             blocking systems can potentially see into all layers involved in a
-	    communication, allowing blocking to be narrowly targeted and can
-	    minimize unintended consequences. Adversary
+            communication, allowing blocking to be narrowly targeted and can
+            minimize unintended consequences. Adversary
             mobility can be accounted for as soon as reputation
             systems are updated with new adversary information. One
             potential drawback of endpoint-based blocking is that
@@ -1713,7 +1713,7 @@
         whenever possible, filtering should be done on the endpoint.
         Cooperative endpoints are most likely to have sufficient contextual
         knowledge to effectively target blocking, hence such blocking minimizes
-	unintended consequences.  It is realistic to expect
+        unintended consequences.  It is realistic to expect
         that at times filtering will not be done on the endpoints.  In these
         cases, promptly informing the endpoint that blocking has occurred
         provides necessary transparency to redress any errors, particularly
