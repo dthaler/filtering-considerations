@@ -737,7 +737,7 @@
             previously, enterprise blocking systems are commonly
             deployed, and will generally have impact on enterprise
             users.  However, design flaws in blocking systems may cause the
-            effects of blocking to be overbroad. For example, a
+            effects of blocking to be overbroad. For example, 
             at least one service provider blocking content in accordance
             with a regulation has ended up blocking content for
             downstream service providers because it filtered
@@ -1094,7 +1094,7 @@
           <t>
             Indeed, Poort, et al. <xref target="Poort"/> found that
             "any behavioural change in
-            response to blocking access to TPB has had no lasting net
+            response to blocking access to The Pirate Bay has had no lasting net
             impact on the overall number of downloaders from illegal
             sources, as new consumers have started downloading from
             illegal sources and people learn to circumvent the blocking
@@ -1128,7 +1128,7 @@
             If the intermediary is unable to decrypt the security
             protocol, then its blocking determinations for secure
             sessions can only be based on unprotected attributes, such
-            as IP addresses, protocol IDs and port numbers, plus
+            as IP addresses, protocol IDs and port numbers, 
             packet sizes, timing etc. Some
             blocking systems today still attempt to block based on
             these attributes, for example by blocking TLS traffic to
@@ -1200,7 +1200,7 @@
           </t>
           <t>
             Network-based blocking is a key contributor to the arms
-            race that has led to the development of these kinds of
+            race that has led to the development of such
             tools, the result of which is to create unnecessary layers
             of complexity in the Internet. Before content-based
             blocking became common, the next best option for network
@@ -1416,7 +1416,7 @@
             Spanish web site. Even though several of the affected
             domain names belonged to Spanish organizations, they were
             subject to blocking by the U.S. government because certain
-            servers were operated in the U.S. Government officials
+            servers were operated in the U.S.  Government officials
             required the operators of the parent zones of a target
             name (e.g., "com" for "example.com") to direct queries for
             that name to a set of U.S.-government-operated name servers.
