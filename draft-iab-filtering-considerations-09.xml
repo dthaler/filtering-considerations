@@ -107,15 +107,9 @@
     </author>
 
     <author fullname="Olaf Kolkman" initials="O." surname="Kolkman">
-      <organization>NLnet Labs</organization>
+      <organization abbrev="ISOC">Internet Society</organization>
       <address>
-    <postal>
-      <street>Science Park 400</street>
-      <city>Amsterdam</city>
-      <code>1098 XH</code> <!-- NB postal code convention is to put the code in front of the city -->
-      <country>Netherlands</country>
-    </postal>
-        <email>olaf@nlnetlabs.nl</email>
+        <email>kolkman@isoc.org</email>
       </address>
     </author>
 
@@ -1829,7 +1823,9 @@
     <section title="Acknowledgments">
         <t> Thanks to the many reviewers who provided helpful comments,
             especially Bill Herrin, Eliot Lear, Patrik Faltstrom,
-            Pekka Savola, and Russ White.
+            Pekka Savola, and Russ White.  NLnet Labs is also
+            acknowledged as Kolkman's employer during most of this
+            document's development.
         </t>
     </section>
 
