@@ -201,7 +201,7 @@
         or services without the knowledge or agreement of affected
         users. Where these organizations do not directly control networks
         themselves, they commonly aim to make use of intermediary
-        systems to effectuate the blocking or filtering.
+        systems to implement the blocking or filtering.
       </t>
 
       <t>
@@ -216,7 +216,7 @@
         preventing access to resources in the aggregate, while
         "filtering" refers to preventing access to specific resources
         within an aggregate. Both blocking and filtering can be
-        effectuated at the level of "services" (web hosting or video
+        implemented at the level of "services" (web hosting or video
         streaming, for example) or at the level of particular
         "content." For the analysis presented in this document, the
         distinction between blocking and filtering does not create
@@ -647,7 +647,7 @@
         <t>
           Those who desire to block communications will typically have
           access to only one or two components, and therefore their
-          choices for how to effectuate blocking will be limited. End
+          choices for how to perform blocking will be limited. End
           users and application providers can usually only control
           their own software and hardware, which means that they are
           limited to endpoint-based filtering. Some network operators
@@ -661,7 +661,7 @@
           usually have access to their own networks and endpoints for
           filtering purposes. Governments might make arrangements with
           the operators or owners of any of the three components that
-          exist within their jurisdictions to effectuate filtering.
+          exist within their jurisdictions to perform filtering.
         </t>
 
         <t>
@@ -706,7 +706,7 @@
             affect a well-defined set of users
             (namely, those connected to the access network).
             <!-- but can affect all applications for those users. -->
-            Blocking effectuated by an application provider can affect users
+            Blocking performed by an application provider can affect users
             across the entire Internet.
             <!-- but only for that specific
                  application. Thus the scope of the impact might be narrow
@@ -972,7 +972,7 @@
             In the case of government-initiated blocking, a network
             exists within specific jurisdictions, and the operators are thus
             subject to jurisdictional laws. It is thus possible for
-            laws to be structured to effectuate blocking by imposing
+            laws to be structured to result in blocking by imposing
             obligations on the operators of networks within
             a jurisdiction, either via direct government action or by
             allowing private actors to demand blocking (e.g., through
@@ -1215,7 +1215,7 @@
           network-based blocking: the Internet was designed with the
           premise that people will want to connect and communicate.
           IP will run on anything up to and including carrier
-          pidgeons.<xref target="RFC1149"/>  It often runs atop TLS
+          pigeons.<xref target="RFC1149"/>  It often runs atop TLS
           and has been made to run on other protocols that themselves
           run atop IP.  Because of this fundamental layering approach
           nearly any authorized avenue of communication can be used as
@@ -1292,7 +1292,7 @@
             that are used to provide rendezvous services exist within
             specific jurisdictions, and their operators are thus
             subject to jurisdictional laws. It is thus possible for
-            laws to be structured to effectuate blocking by imposing
+            laws to be structured to result in blocking by imposing
             obligations on the operators of rendezvous services within
             a jurisdiction, either via direct government action or by
             allowing private actors to demand blocking (e.g., through
@@ -1623,7 +1623,7 @@
             mobility can be accounted for as soon as reputation
             systems are updated with new adversary information. One
             potential drawback of endpoint-based blocking is that
-            it requires the endpoint's cooperation; effectuating
+            it requires the endpoint's cooperation; implementing
             blocking at an endpoint when it is not in the endpoint's
             interest is therefore difficult to accomplish because the
             endpoint's user can disable the blocking or switch to a different endpoint.
