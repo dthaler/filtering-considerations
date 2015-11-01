@@ -825,7 +825,7 @@
             name or network, or use alternate syntaxes to express
             the same resource name 
             (see the discussion of false negatives in 
-            <xref target="RFC6943"/>) such as with internationalized names.
+            <xref target="RFC6943"/>).
           </t>
           <t> 
             In a process known as "snowshoe
