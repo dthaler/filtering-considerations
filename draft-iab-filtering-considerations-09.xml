@@ -232,9 +232,9 @@
         potential for different strategies to potentially cause
         harmful side effects ("collateral damage") for Internet users
         and the overall Internet architecture. This analysis is
-        limited to technical blocking mechanisms.  Enforcement of
-        blocking via contractual terms or legal action is out of
-        scope.
+        limited to technical blocking mechanisms. The scope of the analyzed
+	blocking is limited to intended blocking of content or services;
+	filtering used for other security purposes is out of scope.
       </t>
 
       <t>
@@ -599,8 +599,8 @@
         </t>
 
         <t>
-          As another example, in the SIP protocol, the client and
-          server are IP phones, and the rendezvous service is provided
+          As another example, in the SIP protocol, the two endpoints
+          communicating are IP phones, and the rendezvous service is provided
           by an application-layer SIP proxy as well as the DNS.
         </t>
 
@@ -768,7 +768,7 @@
           </t>
           <t>
             As a result of this structure, actions taken at one layer
-            can affect functionality or applications at higher layers.
+            can affect functionality or applications at other layers.
             For example, manipulating routing or naming functions to
             restrict access to a narrow set of resources via specific
             applications will likely affect all applications that
@@ -821,7 +821,7 @@
             rely on blocked resources can often be rapidly
             re-configured to use non-blocked resources. If a web site
             is prevented from using a domain name or set of IP
-            addresses, the web site can simply move to another domain
+            addresses, the content can simply be moved to another domain
             name or network, or use alternate syntaxes to express
             the same resource name 
             (see the discussion of false negatives in 
@@ -855,9 +855,10 @@
             in order to avoid use of a constant port address.
           </t>
           <t>
-            One of the primary motivations for encrypted HTTP
-            version 2 had to do with blocking and improper processing
-            of unencrypted HTTP/1.1 traffic.  Users or applications shifting
+            One of the primary motivations for arguing that HTTP/2 should
+	    be encrypted by default was that unencrypted HTTP 1.1 traffic was 
+	    sometimes blocked or improperly processed.
+	    Users or applications shifting
             their traffic to encrypted HTTP has the effect of circumventing
             filters that depend on the HTTP plaintext payload.
           </t>
@@ -969,9 +970,9 @@
 
         <section title="Scope">
           <t>
-            In the case of government-initiated blocking, a network
-            exists within specific jurisdictions, and the operators are thus
-            subject to jurisdictional laws. It is thus possible for
+            In the case of government-initiated blocking, network operators
+	    subject to a specific jurisdiction may be required to block or 
+	    filter. It is thus possible for
             laws to be structured to result in blocking by imposing
             obligations on the operators of networks within
             a jurisdiction, either via direct government action or by
@@ -1288,10 +1289,10 @@
 
         <section title="Scope">
           <t>
-            In the case of government-initiated blocking, the servers
-            that are used to provide rendezvous services exist within
-            specific jurisdictions, and their operators are thus
-            subject to jurisdictional laws. It is thus possible for
+            In the case of government-initiated blocking, the operators of servers
+	    used to provide rendezvous service that are
+	    subject to a specific jurisdiction may be required to block or 
+	    filter. It is thus possible for
             laws to be structured to result in blocking by imposing
             obligations on the operators of rendezvous services within
             a jurisdiction, either via direct government action or by
@@ -1312,8 +1313,8 @@
             jurisdiction where it is considered legitimate, then
             blocking access at a global rendezvous service 
             (e.g., one within a jurisdiction where it is considered
-            illegitimate) might deny legitimate services within
-            the legitimate jurisdictions. This type of collateral damage
+            illegitimate) might deny services in jurisdictions where
+	    they are considered legitimate.  This type of collateral damage
             is lessened when blocking is done at a local rendezvous
             server that only has local impact, rather than at a global
             rendezvous server with global impact.
