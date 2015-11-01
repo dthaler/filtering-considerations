@@ -1607,9 +1607,8 @@
             those latter parties to engage in blocking elsewhere within the Internet.
           </t>
           <t>
-            If a service is to be blocked, the best way of doing
-            that is to go to the server endpoint and
-            simply turn the service off.
+	    If a service is to be blocked, the best way of doing that is to
+	    disable the service at the server endpoint.
           </t>
         </section>
 
