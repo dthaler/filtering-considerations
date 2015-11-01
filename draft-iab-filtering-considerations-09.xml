@@ -1019,8 +1019,9 @@
             may limit the scope of the communications that it can
             filter. For example, a filter aimed at requests destined
             for particular URIs cannot make accurate blocking
-            decisions if it is only in the data path for HTTP
-            responses and not requests. Asymmetry may be surmountable
+            decisions based on the URI if it is only in the data path for HTTP
+            responses and not requests, since the URI is not included in the
+	    responses. Asymmetry may be surmountable
             given a filtering system with enough distributed,
             interconnected filtering nodes that can coordinate
             information about flows belonging to the same communication
