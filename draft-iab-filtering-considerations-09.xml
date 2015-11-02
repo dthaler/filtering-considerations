@@ -1124,8 +1124,8 @@
             If the intermediary is unable to decrypt the security
             protocol, then its blocking determinations for secure
             sessions can only be based on unprotected attributes, such
-            as IP addresses, protocol IDs and port numbers, 
-            packet sizes, timing etc. Some
+            as IP addresses, protocol IDs, port numbers, 
+            packet sizes, and packet timing. Some
             blocking systems today still attempt to block based on
             these attributes, for example by blocking TLS traffic to
             known proxies that could be used to tunnel through the
@@ -1412,7 +1412,7 @@
             Spanish web site. Even though several of the affected
             domain names belonged to Spanish organizations, they were
             subject to blocking by the U.S. government because certain
-            servers were operated in the U.S.  Government officials
+            servers were operated in the United States.  Government officials
             required the operators of the parent zones of a target
             name (e.g., "com" for "example.com") to direct queries for
             that name to a set of U.S.-government-operated name servers.
