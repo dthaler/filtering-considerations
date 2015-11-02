@@ -127,6 +127,13 @@
           </address>
         </author>
 
+    <author initials="E." surname="Nordmark" fullname="Erik Nordmark">
+          <organization>Arista</organization>
+          <address>
+            <email>nordmark@arista.com</email>
+          </address>
+        </author>
+
     <date/>
 
     <!-- If the month and year are both specified and are the current ones, xml2rfc will fill
@@ -233,8 +240,9 @@
         harmful side effects ("collateral damage") for Internet users
         and the overall Internet architecture. This analysis is
         limited to technical blocking mechanisms. The scope of the analyzed
-	blocking is limited to intended blocking of content or services;
-	filtering used for other security purposes is out of scope.
+	blocking is limited to intentional blocking, not accidental blocking
+	due to misconfiguration or as an unintentional
+	side effect of something else.
       </t>
 
       <t>
